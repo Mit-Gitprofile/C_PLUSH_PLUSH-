@@ -1,0 +1,59 @@
+
+// QUE-1
+// operator overloading
+
+/*
+Write a Program to overload < operator to find which object contains a higher value
+from given 2 numbers.*/
+
+
+#include <iostream>
+using namespace std;
+
+class Number {
+public:
+    int n1;
+    
+    void set(int n){
+        this->n1 = n;
+    }
+
+    
+    void get(){
+        cout<<this->n1<<endl;
+    }
+
+    
+    bool operator<(const Number &other) 
+    {
+        return this->n1 < other.n1;
+    }
+
+    
+};
+
+int main() {
+    Number t1, t2;
+
+    // Set values for t1 and t2
+    t1.set(10);
+    t2.set(20);
+
+    cout << "t1: ";
+    t1.get();
+    cout << "t2: ";
+    t2.get();
+
+    
+    if(t1<t2) 
+    {
+        cout << "t1 value is smaller than t2 value" << endl;
+    } 
+    else 
+    {
+        cout <<"t1 value is greator than t2 value" << endl;
+    }
+
+   
+    return 0;
+}

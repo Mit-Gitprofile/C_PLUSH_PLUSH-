@@ -1,0 +1,407 @@
+#include <iostream>
+#include<string.h>
+using namespace std;
+
+class LibraryItem{  //BASE CLASS
+    public:
+    
+    string title;
+    string author;   // DATA MEMBERS
+    string dueDate;
+    
+    public:
+        
+        // void getTitle();
+        // void getAuthor();
+        // void getDueDate();
+                                // NOT USE IN THIS PROGRAMM
+        // void setTitle();
+        // void setAuthor();
+        // void setDueDate();
+        
+        virtual void checkOut() = 0;
+        virtual void returnItem() = 0;      //VIRTUAL FUNCTIONS
+        virtual void displayDetails() = 0;
+    
+};
+
+class Book : public LibraryItem{    //DERIVE CLASS
+    public:
+    string isbn; //DATA MEMBER
+     
+    public:
+  
+    Book(const string& t, const string& a, const string& d, const string& i)    //CONSTRUCTOR 
+    {
+        title=t;   //assign value taken from user
+        author=a;
+        dueDate=d;
+        isbn=i;
+    }
+    
+                //OVERRIDE FOR CONNECTION TO VIRTUAL METHOD IN BASE CLASS
+    
+    void checkOut() override    //CHECKOUT METHOD
+    {
+        cout << "Book "<<title<<" checked out." << endl;
+    }
+    
+    void returnItem() override  //RETURN TYPE METHOD
+    {
+        cout << "Book "<<title<<" returned." << endl;
+    }
+
+    void displayDetails() override  //DISPLAY METHOD
+    {
+        cout<<endl<<"DISPLAY ===>"<<endl;
+        cout<<"Book title: "<<title<<endl;
+        cout<<"Author: "<<author<<endl;         //DISPLAY DETAILS
+        cout<<"isbn no: "<<isbn<<endl;
+        cout<<"Due date:"<<dueDate<<endl;
+        
+    }
+    
+};
+
+
+
+class DVD : public LibraryItem{
+    public:
+     int duration;
+     
+    public:
+  
+    DVD(const string& t, const string& a, const string& d, const int& dur) 
+    {
+        title=t;   //assign value taken from user
+        author=a;
+        dueDate=d;
+        duration=dur;
+    }
+    
+                //OVERRIDE FOR CONNECTION TO VIRTUAL METHOD IN BASE CLASS
+    
+    void checkOut() override    //CHECKOUT METHOD 
+    {
+        cout<<"Book" <<title<<" checked out."<<endl;
+    }
+
+    void returnItem() override   //RETURN TYPE METHOD
+    {
+        cout<<"Book "<<title<<" returned."<<endl;
+    }
+
+    void displayDetails() override  //DISPLAY METHOD 
+    {
+        cout<<endl<<"DISPLAY ===>"<<endl;
+        cout<<"DVD name: "<<title<<endl;
+        cout<<"Author: "<<author<<endl;         //DISPLAY DETAILS
+        cout<<"Due date:"<<dueDate<<endl;
+        cout<<"Dureation in minute: "<<duration<<endl;
+    }
+    
+};
+
+
+
+class Magazine : public LibraryItem{
+    public:
+     int issuenumber;
+     
+    public:
+  
+    Magazine(const string& t, const string& a, const string& d, const int& issu) 
+    {
+        title=t;   //assign value taken from user
+        author=a;
+        dueDate=d;
+        issuenumber=issu;
+    }
+    
+                //OVERRIDE FOR CONNECTION TO VIRTUAL METHOD IN BASE CLASS
+    
+    void checkOut() override    //CHECKOUT METHOD 
+    {
+        cout<<"Book " <<title<<" checked out."<<endl;
+    }
+
+    void returnItem() override  //RETURN TYPE METHOD
+    {
+        cout<<"Book "<<title<<" returned."<<endl;
+    }
+
+    void displayDetails() override   //DISPLAY METHOD
+    {
+        cout<<endl<<"DISPLAY ===>"<<endl;
+        cout<<"Magazine name: "<<title<<endl;
+        cout<<"Author: "<<author<<endl;         //DISPLAY DETAILS
+        cout<<"Due date:"<<dueDate<<endl;
+        cout<<"Issue number: "<<issuenumber<<endl;
+    }
+    
+};
+
+
+int main()
+{
+    LibraryItem* libraryItems[10];  //POINTER OBJECT
+    int itemCount = 0;  // FOR COUT ITEAMS
+    int ch,a,b,c;
+    char soluations[] = "LIBRARY IS FULL!!!";   //FOR EXEPSTION
+    
+    
+    do
+    {
+        cout<<endl<<"================================="<<endl;
+        cout<<"*** LIBRARY MANAGEMENT SYSTEM ***"<<endl;
+        cout<<"================================="<<endl;
+        cout<<endl<<"0. EXIT."<<endl;
+        cout<<endl<<"1. ADD BOOK."<<endl;               //DETAILS 
+        cout<<endl<<"2. ADD DVD."<<endl;
+        cout<<endl<<"3. ADD MEGAZINE."<<endl;
+        
+        cout<<endl<<"Enter your choise:";
+        cin>>ch;
+        
+        switch(ch)
+        {
+            
+            
+            case 1: // FOR BOOK DETAILS
+                try
+                {
+                    {
+                        string title,author,duedate,isbn;
+                        cout<<"Enter book title:";
+                        cin.ignore();
+                        getline(cin, title);
+                        cout<<"Enter author name:";
+                        getline(cin, author);          // ENTER BOOK DETAILS
+                        cout<<"Enter due date:";
+                        getline(cin, duedate);
+                        cout<<"Enter isbn no.:";
+                        getline(cin, isbn);
+                        
+                        if(itemCount<10) 
+                        {
+                            libraryItems[itemCount++] = new Book(title, author, duedate, isbn);  // CALL THE BOOK CLASS AND SEND DETAILS TAKEN FROM USER
+                            
+                            do
+                            {
+                                try
+                                {
+                                
+                            
+                                    cout<<endl<<"=== OTHER FECILITIES ==="<<endl;
+                                    cout<<endl<<"0. exit."<<endl;
+                                    cout<<endl<<"1. checking out."<<endl;
+                                    cout<<endl<<"2. return out."<<endl;    // OTHER FECILITIES
+                                    cout<<endl<<"3. display."<<endl;
+                                    
+                                    cout<<endl<<"Enter your choise:";
+                                    cin>>a;
+                                    
+                                    switch(a)                       // [ITEMCOUNT - 1] BECAUE CATCH THE PRESENT VALUE
+                                    {
+                                        case 1: // Check out
+                                            libraryItems[itemCount - 1]->checkOut(); // CALL CHECHOUT METHOD
+                                            break;
+                                            
+                                        case 2: // Return
+                                            libraryItems[itemCount - 1]->returnItem();  //CALL RETURN ITEM METHOD
+                                            break;
+                                            
+                                        case 3: // Display details
+                                            libraryItems[itemCount - 1]->displayDetails();  //CALL DISPLAY DETAIL METHOD
+                                            break;
+                                            
+                                        case 0:
+                                            break;
+                                            
+                                        default:
+                                            throw 10; //THROW INTEGER
+                                    }
+                                }
+                                catch(int n) //CATCH INTEGER AND GIVE MEAASGE
+                                {
+                                    cout<<"invelid choise!!!";
+                                }
+                            }while(a!=0); // CHOISE NOT = 0
+                        } 
+                   
+                        else 
+                        {
+                            throw soluations;
+                        }
+                        
+                        break;
+                    }
+                    
+                }   
+                catch(char n[])
+                    {
+                      cout << n << endl;
+                    }
+                
+                
+                
+            case 2:     // FOR DVD DETAILS
+                try
+                {
+                    {
+                        string title,author,duedate;
+                        int duration;
+                        
+                        cout<<"Enter dvd name:";
+                        cin.ignore();
+                        getline(cin, title);
+                        cout<<"Enter dvd author name:";      // ENTER DVD DETAILS
+                        getline(cin, author);
+                        cout<<"Enter due date:";
+                        getline(cin, duedate);
+                        cout<<"Enter duration (in minute) :";
+                        cin>>duration;
+                        
+                        if(itemCount<10) {
+                            libraryItems[itemCount++] = new DVD(title, author, duedate, duration); // CALL THE DVD CLASS AND SEND DETAILS TAKEN FROM USER
+                            
+                            do
+                            {
+                              try
+                              {
+                                    cout<<endl<<"=== OTHER FECILITIES ==="<<endl;
+                                    cout<<"0. exit."<<endl;
+                                    cout<<"1. checking out."<<endl;   // OTHER FECILITIES
+                                    cout<<"2. return out."<<endl;
+                                    cout<<"3. display."<<endl;
+                                    
+                                    cout<<"Enter your choise:";
+                                    cin>>b;
+                                    
+                                    switch(b) 
+                                    {
+                                        case 1:  // check out
+                                            libraryItems[itemCount-1]->checkOut();// CALL CHECHOUT METHOD
+                                            break;
+                                            
+                                        case 2:  // return
+                                            libraryItems[itemCount-1]->returnItem();  //CALL RETURN ITEM METHOD
+                                            break;
+                                            
+                                        case 3:  // display all details
+                                            libraryItems[itemCount-1]->displayDetails();  //CALL DISPLAY DETAIL METHOD
+                                            break;
+                                            
+                                        case 0:  //exit
+                                            break;
+                                            
+                                        default:
+                                            throw 10; //THROW INTEGER
+                                    }
+                              }
+                                catch(int m)//CATCH INTEGER AND GIVE MEAASGE
+                                {
+                                    cout<<"invelid choise!!!";
+                                }
+                                
+                            }while(b!=0); // CHOISE NOT = 0
+                        } 
+                        else 
+                        {
+                            throw soluations;
+                        }
+                        break;
+                        
+                    }
+                }
+                catch(char n[])
+                    {
+                      cout << n << endl;
+                    }
+                
+                
+            
+            case 3:     // FOR MAGAZINE DETAILS
+                try
+                {
+                    {
+                        string title,author,duedate;
+                        int issuenumber;
+                        
+                        cout<<"Enter magazine name:";
+                        cin.ignore();
+                        getline(cin, title);
+                        cout<<"Enter magazine author name:";      // ENTER MAGAZINE DETAILS
+                        getline(cin, author);
+                        cout<<"Enter due date:";
+                        getline(cin, duedate);
+                        cout<<"Enter issuenumber:";
+                        cin>>issuenumber;
+                        
+                        if(itemCount<10) {
+                            libraryItems[itemCount++] = new Magazine(title, author, duedate, issuenumber); // CALL THE MAGAZINE CLASS AND SEND DETAILS TAKEN FROM USER
+                            
+                            do
+                            {
+                                try
+                                {
+                                
+                                    cout<<endl<<"=== OTHER FECILITIES ==="<<endl;
+                                    cout<<"0. exit."<<endl;
+                                    cout<<"1. checking out."<<endl;   // OTHER FECILITIES
+                                    cout<<"2. return out."<<endl;
+                                    cout<<"3. display."<<endl;
+                                    
+                                    cout<<"Enter your choise:";
+                                    cin>>c;
+                                    
+                                    switch(c) 
+                                    {
+                                        case 1:  // check out
+                                            libraryItems[itemCount-1]->checkOut();// CALL CHECHOUT METHOD
+                                            break;
+                                            
+                                        case 2:  // return
+                                            libraryItems[itemCount-1]->returnItem();  //CALL RETURN ITEM METHOD
+                                            break;
+                                            
+                                        case 3:  // display all details
+                                            libraryItems[itemCount-1]->displayDetails();  //CALL DISPLAY DETAIL METHOD
+                                            break;
+                                            
+                                        case 0:  //exit
+                                            break;
+                                            
+                                        default:
+                                            throw 30; //THROW INTEGER
+                                    }
+                                }
+                                catch(int l)//CATCH INTEGER AND GIVE MEAASGE
+                                {
+                                    cout<<"invelid choise!!!";
+                                }
+                                
+                            }while(c!=0); // CHOISE NOT = 0
+                        } 
+                        else 
+                        {
+                            throw soluations;
+                        }
+                        break;
+                        
+                    }
+                }
+                catch(char n[])
+                    {
+                      cout << n << endl;
+                    }
+           
+        }
+        
+        
+        
+    }while(ch!=0); // CHOISE NOT = 0
+    
+
+    return 0;
+}

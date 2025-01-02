@@ -1,0 +1,149 @@
+
+// QUE-1
+// Method Overloading
+
+/*
+Write a Program to perform all basic arithmetic. operations such as +, -, *, and /
+operations by implementing method overloading using 2 classes.
+- use only one method named calculate() in the child class
+- if you pass 2 arguments, perform division
+- if you pass 3 arguments, perform subtraction
+- if you pass 4 arguments, perform multiplication
+- if you pass 5 arguments, perform addition*/
+
+
+#include <iostream>
+using namespace std;
+
+class arithmeic_operation{
+  
+  public:
+  
+};
+
+class calculater:public arithmeic_operation{
+    
+    public:
+    
+    void calculate(int a,int b)
+    {
+        if(a==0||b==0)
+        {
+            cout<<"any one value is 0.";
+        }
+        else if(b>a)
+        {
+            cout<<"second value is big (deviision not possible)";
+        }
+        else
+        {
+            cout<<"devision of "<<a<<"/"<<b<<" is:"<<a/b<<endl;
+        }
+    }
+  
+    void calculate(int a,int b,int c)
+    {
+        
+        cout<<"substraction of "<<a<<"-"<<b<<"-"<<c<<" is:"<<a-b-c<<endl;
+        
+    }
+    
+    void calculate(int a,int b,int c,int d)
+    {
+        
+        cout<<"multiplication of "<<a<<"*"<<b<<"*"<<c<<"*"<<d<<" is:"<<a*b*c*d<<endl;
+        
+    }
+    
+     void calculate(int a,int b,int c,int d,int e)
+    {
+        
+        cout<<"sum of "<<a<<"+"<<b<<"+"<<c<<"+"<<d<<"+"<<e<<" is:"<<a+b+c+d+e<<endl;
+        
+    }
+};
+
+int main()
+{
+    calculater c1;
+    
+    c1.calculate(40,10);
+    c1.calculate(40,10,5);
+    c1.calculate(10,20,30,40);
+    c1.calculate(10,20,30,40,50);
+   
+
+    return 0;
+}
+
+//==============================================================================
+
+// // QUE-2
+// // Method Overloading
+
+ /*
+ Write a Program to implement method overriding by following the below-mentioned
+criteria:- Class Cricket -> Class T20Match
+- Class Cricket -> Class TestMatch
+- Override getTotalOvers() method in both classes
+ */
+
+#include <iostream>
+using namespace std;
+ 
+class Cricket {
+    public:
+       
+        virtual void getTotalOvers() {
+            cout << "Total overs in a cricket match: 50" << endl;
+        }
+};
+
+
+class T20Match : public Cricket {
+    public:
+       
+        void getTotalOvers(){
+            cout << "Total overs in a T20 match: 20" << endl;
+        }
+};
+
+
+class TestMatch : public Cricket  {
+    public:
+        
+        void getTotalOvers(){
+            cout << "Total overs in a Test match: 90" << endl;
+        }
+};
+ 
+ 
+int main()
+{
+    
+    TestMatch t1;
+
+  t1.getTotalOvers();
+  t1.T20Match::getTotalOvers();
+  t1.Cricket::getTotalOvers();
+  
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

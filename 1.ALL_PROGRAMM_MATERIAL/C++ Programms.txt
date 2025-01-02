@@ -1,0 +1,2584 @@
+// Your First C++ Program
+
+#include <iostream>
+
+int main() 
+{    
+    int  a = 10 , b = 20;
+    
+    std::cout << "Hello World!";   
+    
+    std::cout << a << b;
+    
+    return 0;
+}
+
+
+
+---------------------------------------------------------------------------
+
+#include <iostream>
+
+int main() 
+{
+
+  std::string first_name;
+
+  std::cout << "Enter your first name: ";
+  std::cin >> first_name;
+  std::cout << "Hello " << first_name << "  " << std::endl;
+  std::cout << "Welcome!";
+
+  return 0;
+}
+------------------------
+
+int main() 
+{    
+    int  a = 10 , b = 20;
+    std::cout << "Hello World!";   
+    std::cout << a << b;
+    return 0;
+}
+
+----------------------------------------------------------------------------
+
+
+#include <iostream>
+
+// using declartion for cout, endl and string
+using std::cout;
+using std::endl;
+using std::string;
+
+int main() 
+{
+
+  string first_name ;
+
+  cout << "Enter your first name: ";
+  std::cin >> first_name;
+  cout << "Hello " << first_name << "!" << endl;
+  cout << "Welcome!";
+
+  return 0;
+}
+-----------------------------------------------------------------
+
+#include <iostream>
+#include <cstring> // For C-style strings
+
+using namespace std;
+
+class Student 
+{
+public:
+    int id;
+    char name[100]; 
+};
+
+int main() 
+{
+    Student s1; // object
+    s1.id = 5;
+
+    cout << "Enter name: ";
+    cin.getline(s1.name, 100);
+
+    // Output the id and name
+    cout << "id: " << s1.id << endl;
+    cout << "name: " << s1.name << endl;
+
+    return 0;
+}
+
+
+----------------------------------------------------------
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+  cout<<"\'C\'\t\'L\'\t\'i\'\t\'n\'\t\'i\'\t\'c\'\n";
+  cout<<"\"Electronic\"\n";
+}
+
+
+------------------------------
+#include <iostream>
+
+// using directive
+using namespace std;
+
+int main() {
+
+  string first_name ;
+
+  cout << "Enter your first name: ";
+  cin >> first_name;
+  cout << "Hello " << first_name << "!" << endl;
+  cout << "Welcome!";
+
+  return 0;
+}
+
+--------------------------------------------------
+
+#include <iostream>
+
+#include <iomanip>
+
+using namespace std;
+
+int main() {
+
+  // initialize a floating-point 
+
+  float num = 2.71828;
+
+  cout << "Original number is: " << num;
+
+  cout << "\n";
+
+  // print 3 significant figures
+
+  cout << "The number with 3 significant figures is: ";
+  
+  cout << "\n\n";
+
+  cout << setprecision(2) << num;
+
+  return 0; 
+
+}
+
+
+
+----------------------------------------------------------------
+
+// objects and class in C++ Programming
+
+#include <iostream>
+using namespace std;
+
+// create a class
+class Room {
+
+   public:
+   	double length;
+    double breadth;
+    double height;
+
+    double calculateArea() 
+    {
+        return length * breadth;
+    }
+
+    double calculateVolume() 
+    {
+        return length * breadth * height;
+    }
+};
+
+
+
+int main() 
+{
+
+    // create object of Room class
+    Room room1;
+
+    // assign values to data members
+    room1.length = 42.5;
+    room1.breadth = 30.8;
+    room1.height = 19.2;
+
+    // calculate and display the area and volume of the room
+    cout << "Area of Room =  " << room1.calculateArea() << endl;
+    cout << "Volume of Room =  " << room1.calculateVolume() << endl;
+
+    return 0;
+}
+
+
+Area of Room =  1309
+Volume of Room =  25132.8
+
+
+
+-------------------------------------------------------------------------------------------
+#include <iostream>
+#include <string.h>
+
+
+using namespace std;
+
+class Student 
+{
+  public:
+  int id;
+  char name[100];
+};
+
+int main() 
+{
+
+  Student s1; // object
+  s1.id = 5;
+  strcpy(s1.name ,"mayur");
+
+  // calculate and display the area and volume of the room
+  cout << "id:- " << s1.id << endl;
+  cout << "name :- " << s1.name << endl;
+
+  return 0;
+}
+
+--------------------------------------------------------------------------------
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+
+class Employee
+{
+  public:
+    int id;
+    char name[100];
+    int salary;
+    
+};
+
+int main() 
+{
+  
+  Employee e1,e2;
+   
+  e1.id = 1;
+  strcpy(e1.name ,"mayur");
+  e1.salary = 10000;
+   
+  e2.id = 2;
+  strcpy(e2.name ,"TOM");
+  e2.salary = 15000;
+  
+  cout << "id:- " << e1.id << endl;
+  cout << "name :- " << e1.name << endl;
+  cout << "name :- " << e1.salary << endl;
+  
+  
+  cout << "id:- " << e2.id << endl;
+  cout << "name :- " << e2.name << endl;
+  cout << "name :- " << e2.salary << endl;
+  
+  return 0;
+}
+
+---------------------------------------------------------------------------------
+
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+
+class Employee
+{
+  public:
+    int id;
+    char name[100];
+    int salary;
+    
+    void setdata()
+    {
+      id = 1;
+      strcpy(name , "mayur");
+      salary = 10000;   
+    }
+    
+    
+    void getdata()
+    {
+      cout << "id:- " << id << endl;
+      cout << "name :- " << name << endl;
+      cout << "name :- " << salary << endl;
+  
+    }
+    
+};
+
+int main() 
+{
+  
+  Employee e1,e2;
+  
+  
+  e1.setdata();
+  e2.setdata();
+  
+  e1.getdata();
+  e2.getdata();
+   
+ 
+  return 0;
+}
+
+--------------------------------------------------------------------------------------
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+
+class Employee
+{
+  public:
+    int id;
+    char name[100];
+    int salary;
+
+    // setter
+    
+    void setdata()
+    {
+        cout <<"Enter id :-" ;
+        cin>>id;
+        cout<<"Enter Name :-";
+        cin>>name;
+        cout<<"Enter salary :-";
+        cin>>salary;
+        
+    }
+    
+    // getter
+    void getdata()
+    {
+        cout << "id:- " << id << endl;
+        cout << "name :- " << name << endl;
+        cout << "name :- " << salary << endl;
+  
+    }
+    
+};
+
+int main() 
+{
+  
+  Employee e1,e2;
+  
+  e1.setdata();
+  e2.setdata();
+  
+  // e1.salary = 7000;
+  e1.getdata();
+  e2.getdata();
+   
+ 
+  return 0;
+}
+
+--------------------------------------------------------------------------------
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+
+class Employee
+{
+  private:
+    int id;
+    char name[100];
+    int salary;
+
+
+  public:
+    // setter
+    
+    void setdata()
+    {
+        cout <<"Enter id :-" ;
+        cin>>id;
+        cout<<"Enter Name :-";
+        cin>>name;
+        cout<<"Enter salary :-";
+        cin>>salary;
+        
+    }
+    
+    // getter
+    void getdata()
+    {
+        cout << "id:- " << id << endl;
+        cout << "name :- " << name << endl;
+        cout << "name :- " << salary << endl;
+  
+    }
+    
+};
+
+int main() 
+{
+  
+  Employee e1,e2;
+  
+  e1.setdata();
+  e2.setdata();
+  
+  e1.salary = 7000;
+  e1.getdata();
+  e2.getdata();
+   
+ 
+  return 0;
+}
+
+-----------------------------------------------------------------------------
+
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+
+class Employee
+{
+  private:
+    int id;
+    char name[100];
+    int salary;
+
+
+  public:
+    // setter
+    
+    void setdata(int n1 , char n2[], int n3 )
+    {
+        id  = n1;
+        strcpy(name, n2);
+        salary = n3;
+        
+    }
+    
+    // getter
+    void getdata()
+    {
+      cout << "id:- " << id << endl;
+      cout << "name :- " << name << endl;
+      cout << "name :- " << salary << endl;
+  
+    }
+    
+};
+
+int main() 
+{
+  
+  Employee e1,e2;
+  
+  e1.setdata(1,"Mayur", 25000);
+  e2.setdata(2,"Viren",35000);
+
+  e1.getdata();
+  e2.getdata();
+   
+ 
+  return 0;
+}
+
+-------------------------------------------------------------------------
+
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+
+class Employee
+{
+  private:
+    int id;
+    char name[100];
+    int salary;
+
+
+  public:
+    // setter
+    
+    void setdata(int id , char name[], int salary )
+    {
+       id  = id;
+       strcpy(name, name);
+       salary = salary;
+
+      this->id  = id;
+      strcpy(this->name, name);
+      this->salary = salary;
+      this->getdata();
+        
+    }
+    
+    // getter
+    void getdata()
+    {
+      cout << "id:- " << id << endl;
+      cout << "name :- " << name << endl;
+      cout << "name :- " << salary << endl;
+  
+    }
+    
+};
+
+int main() 
+{
+  
+  Employee e1,e2;
+  
+  e1.setdata(1,"Mayur", 25000);
+  e2.setdata(2,"Viren",35000);
+
+  e1.getdata();
+  e2.getdata();
+   
+ 
+  return 0;
+}
+
+
+----------------------------------------------------------------------------------------------------
+
+
+// 1 stu =  3 var - 108 bytes
+//1000 stu = 3000 var - 1,08,000 bytes
+ 
+// static - 1 stu -> 2 var = 8 bytes
+//          1000  -> 2000 + 1 = 8000 bytes + 100 bytes  = 8100 bytes
+
+
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+
+class Student 
+{
+  public:
+    int id;     // 4 bytes
+    char name[100];  // 100 bytes
+    float perc;  // 4 bytes
+ };
+
+int main() 
+{
+
+  Student s1 , s2; // object
+  s1.id = 5;
+  strcpy(s1.name ,"mayur");
+  s1.perc = 89.80;
+
+  // calculate and display the area and volume of the room
+  cout << "id:- " << s1.id << endl;
+  cout << "name :- " << s1.name << endl;
+  cout << "name :- " << s1.perc << endl;
+  
+  
+  s2.id = 6;
+  strcpy(s2.name ,"Viren");
+  s2.perc = 90.80;
+
+  // calculate and display the area and volume of the room
+  cout << "id:- " << s2.id << endl;
+  cout << "name :- " << s2.name << endl;
+  cout << "name :- " << s2.perc << endl;
+  
+
+  return 0;
+}
+-----------------------------------------------------------------------
+
+
+#include <iostream>
+// #include <string.h>
+using namespace std;
+
+
+class Student 
+{
+  public:
+    int id;     // 4 bytes
+    static char clg[100];  // 100 bytes
+    float perc;  // 4 bytes
+
+
+    void info()
+    {
+      cout << "ID :" << id << endl;
+      cout << "perc :" << perc << endl;
+
+      cout << "clg :" << clg << endl;
+    }
+
+    // static void info()
+    // {
+    //   cout << "ID :" << id << endl;
+    //   cout << " :" << perc << endl;
+
+    //   cout << "ID :" << clg << endl;
+    // }
+
+
+
+};
+
+
+
+
+//  Scope Resolution Operator ::
+// Me
+
+//  char clg[100] = "RNW";
+//  char clg[100] = "XYZ";
+
+char Student::clg[100] = "RNW";
+//char Emp::clg[100] = "XYZ";
+
+
+int main() 
+{
+
+  
+//   cout << Student::clg << endl;
+
+  Student s1; // object
+//   Emp s3;
+  
+  s1.info();
+
+  s1.id = 5;
+  s1.perc = 89.80;
+
+  // calculate and display the area and volume of the room
+  cout << "id:- " << s1.id << endl;
+  cout << "name :- " << s1.perc << endl;
+  cout << "Clg :- " << s1.clg << endl;
+  
+ 
+
+  return 0;
+}
+
+
+------------------------------------------------------------------
+
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+
+class Student 
+{
+  public:
+    int id;     // 4 bytes
+    static char clg[100];  // 100 bytes
+    float perc;  // 4 bytes
+
+
+    void info()
+    {
+      cout << "ID :" << id << endl;
+      cout << " :" << perc << endl;
+
+      cout << "ID :" << clg << endl;
+    }
+
+    // static void info()
+    // {
+    //   cout << "ID :" << id << endl;
+    //   cout << " :" << perc << endl;
+
+    //   cout << "ID :" << clg << endl;
+    // }
+
+
+
+};
+
+class Emp
+{
+  public:
+    int id;     // 4 bytes
+    static char clg[100];  // 100 bytes
+    float perc;  // 4 bytes
+};
+
+
+//  Scope Resolution Operator ::
+// Me
+
+ char clg[100] = "RNW";
+ char clg[100] = "XYZ";
+
+char Student::clg[100] = "RNW";
+char Emp::clg[100] = "XYZ";
+
+
+int main() 
+{
+
+  
+  cout << Student::clg << endl;
+
+  Student s1 , s2; // object
+  Emp s3;
+  
+  s1.info();
+
+  s1.id = 5;
+  s1.perc = 89.80;
+
+  // calculate and display the area and volume of the room
+  cout << "id:- " << s1.id << endl;
+  cout << "name :- " << s1.perc << endl;
+  cout << "Clg :- " << s1.clg << endl;
+  
+  s2.id = 5;
+  s2.perc = 89.80;
+
+  strcpy(Student::clg ,"XYZ")
+
+  // calculate and display the area and volume of the room
+  cout << "id:- " << s2.id << endl;
+  cout << "name :- " << s2.perc << endl;
+  cout << "Clg :- " << s2.clg << endl;
+
+
+  
+  s3.id = 6;
+  s3.perc = 90.80;
+
+  // calculate and display the area and volume of the room
+  cout << "id:- " << s3.id << endl;
+  cout << "name :- " << s3.perc << endl;
+  cout << "Clg :- " << s3.clg << endl;
+  
+
+  return 0;
+}
+
+---------------------------------------------------------------------
+
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+
+class Student 
+{
+  public:
+    int id;     // 4 bytes
+    static char clg[100];  // 100 bytes
+    float perc;  // 4 bytes
+
+
+    void info()
+    {
+      cout << "ID :" << id << endl;
+      cout << "Perc:" << perc << endl;
+      cout << "CLG :" << clg << endl;
+    }
+
+    static void info()
+    {
+       cout << "ID :" << id << endl;
+       cout << " :" << perc << endl;
+
+      cout << "ID :" << clg << endl;
+    // }
+
+
+};
+
+class Emp
+{
+  public:
+    int id;     // 4 bytes
+    static char clg[100];  // 100 bytes
+    float perc;  // 4 bytes
+};
+
+
+//  Scope Resolution Operator ::
+// Me
+
+// char clg[100] = "RNW";
+// char clg[100] = "XYZ";
+
+char Student::clg[100] = "RNW";
+char Emp::clg[100] = "XYZ";
+
+
+int main() 
+{
+
+  cout << Student::clg << endl;
+
+  Student s1 , s2; // object
+  Emp s3;
+  
+ 
+  
+  s1.id = 5;
+  s1.perc = 89.80;
+  // s1.info();
+  Student.info();
+
+  // calculate and display the area and volume of the room
+//   cout << "id:- " << s1.id << endl;
+//   cout << "name :- " << s1.perc << endl;
+//   cout << "Clg :- " << s1.clg << endl;
+  
+  s2.id = 5;
+  s2.perc = 89.80;
+
+  strcpy(Student::clg ,"XYZ");
+
+  // calculate and display the area and volume of the room
+//   cout << "id:- " << s2.id << endl;
+//   cout << "name :- " << s2.perc << endl;
+//   cout << "Clg :- " << s2.clg << endl;
+
+
+  
+  s3.id = 6;
+  s3.perc = 90.80;
+
+  // calculate and display the area and volume of the room
+//   cout << "id:- " << s3.id << endl;
+//   cout << "name :- " << s3.perc << endl;
+//   cout << "Clg :- " << s3.clg << endl;
+  
+
+  return 0;
+}
+
+------------------------------------------------------
+
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+
+class Student 
+{
+  public:
+    int id;
+    char name[100];
+    int age;
+
+    // setter
+    
+    void setdata()
+    {
+        cout <<"Enter id :-" ;  cin>> this->id;
+        cout<<"Enter Name :-";  cin>> this->name;
+        cout<<"Enter age :-";  cin>> this->age;
+        
+    }
+    
+    // getter
+    void getdata()
+    {
+        cout << "id:- " << this->id << endl;
+        cout << "name :- " << this->name << endl;
+        cout << "age :- " << this->age << endl;
+  
+    }
+    
+};
+
+int main() 
+{
+  
+  Student e1,e2;
+
+  e1.setdata();
+  e2.setdata();
+  
+  e1.getdata();
+  e2.getdata();
+
+
+  // Array of object
+  Student s[100];
+
+  s[0].setdata();
+  s[1].setdata();
+  
+  s[0].getdata();
+  s[1].getdata();
+   
+ 
+  return 0;
+
+}
+
+-----------------------------------------------------
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+
+class Student 
+{
+  public:
+    int id;
+    char name[100];
+    int age;
+
+    // setter
+    
+    void setdata()
+    {
+        cout <<"Enter id :-" ;  cin>> this->id;
+        cout<<"Enter Name :-";  cin>> this->name;
+        cout<<"Enter age :-";  cin>> this->age;
+        
+    }
+    
+    // getter
+    void getdata()
+    {
+        cout << "id:- " << this->id << endl;
+        cout << "name :- " << this->name << endl;
+        cout << "age :- " << this->age << endl;
+  
+    }
+    
+};
+
+int main() 
+{
+
+  // Array of object
+  Student s[100];
+
+  int i;
+
+  for (i=0; i<=2; i++)
+  {
+    s[i].setdata();
+    
+  }
+
+  for (i=0; i<=2; i++)
+  {
+    s[i].getdata();
+  }
+ 
+  return 0;
+  
+}
+
+------------------------------------------------------------------
+//  friend Funcations
+
+
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+
+class Ajay
+{
+    private:
+      int money = 15000;
+      int number_of_props = 5;
+
+    friend void hitesh();
+
+};
+
+void hitesh()
+{
+  Ajay a1;
+  cout << a1.money;
+
+}
+
+int main()
+{
+   
+  hitesh();
+  return 0;
+
+}
+
+----------------------------------------------------------------------------------------
+
+
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+class Viren;
+
+class Ajay
+{
+    private:
+      int money = 15000;
+      int number_of_props = 5;
+
+    friend void mayur(Ajay , Viren);
+
+};
+
+
+class Viren
+{
+    private:
+      int Salary = 45000;
+      int number_of_props = 5;
+
+    friend void mayur(Ajay , Viren);
+
+};
+
+void mayur(Ajay n1 , Viren n2 )
+{
+ 
+  cout << n1.money << endl;
+  cout << n2.Salary << endl;
+
+}
+
+int main()
+{
+  Ajay a1;
+  Viren v1;
+  mayur(a1 , v1);
+
+  return 0;
+
+}
+
+
+---------------------------------------------------------
+#include <iostream>
+// using directive
+using namespace std;
+
+
+class city
+{  
+
+  public:
+  	
+    void greeting()
+    {
+      cout << " welcome to city" << endl;
+    } 
+
+};
+
+int main() 
+
+{
+  city c1; //  class is instantiated
+  c1.greeting();
+  
+  return 0;
+}
+
+
+---------------------------------------------------
+
+#include <iostream>
+// using directive
+using namespace std;
+
+
+class City
+{  
+
+  public:
+    // Default Constructor
+    City()
+    {
+       
+      cout << " welcome to city" << endl;
+ 
+    } 
+
+};
+
+int main() 
+
+{
+
+  City c1; //  class is instantiated // default object
+
+  cout << "------------------------------------" << endl;
+
+  City C[10];
+  
+  
+  return 0;
+}
+
+---------------------------------------------------------
+
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+
+class City
+{  
+
+  public:
+    int id;
+    char name[100];
+    // Parameterised Constructor
+    City(int i , char n[] )
+    {
+       
+        this->id = i;
+        strcpy(this->name,n);
+       
+        
+        this->getdata();
+        
+ 
+    } 
+
+    void getdata()
+    {
+        cout <<  this->id << " " <<  this-> name << endl;
+    }
+
+
+    City()
+    {
+       
+      cout << " welcome to city" << endl;
+ 
+    } 
+
+};
+
+int main() 
+
+{
+
+  City c1(1,"Surat"); // Parameterised Constructor call - object
+  City c2; // Default Constructor call - object
+  
+  return 0;
+}
+
+
+---------------------------------------------------------
+
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+
+class Points
+{  
+
+  public:
+    
+    int p1 , p2;
+
+    Points(int n1,int n2)
+    {
+      this->p1 = n1;
+      this->p2 = n2;
+      cout << this-> p1 << this->p2 << endl;
+    }
+   
+    // Copy Constructor
+    Points(Points &n) // Points &n = o1;
+    {
+      this->p1 = n.p1;
+      this->p2 = n.p2;
+
+      cout << this-> p1 << this->p2 << endl;
+    }
+
+    
+};
+
+int main() 
+{
+  // Points o1(3,5);
+  // Points o2(4,10);
+  Points o3(o1); // Call Copy Constructor
+  Points o4 = o1;
+
+
+  return 0;
+}
+-----------------------------------------------------------------------
+
+// Destructor
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+
+class City
+{  
+
+  public:
+    int id;
+    char name[100];
+ 
+   // Constructor
+    City()
+    {
+       
+      cout << " welcome to city" << endl;
+ 
+    } 
+
+    // Destructor
+
+    ~City()
+    {
+       
+        cout << "Thankyou for visit" << endl;
+ 
+    } 
+
+};
+
+int main() 
+
+{
+
+  City c1 , c2; 
+  
+  return 0;
+}
+
+-------------------------------------------------------------------------
+#include <iostream>
+using namespace std;
+static int Count = 0;	 //It is static so that every class object has the same value 
+class Test {
+public:
+	// User-Defined Constructor
+	Test()
+	{
+
+		// Number of times constructor is called
+		Count++;
+		cout << "No. of Object created: " << Count
+			<< endl;
+	}
+
+	// User-Defined Destructor
+	~Test()
+	{
+		
+		cout << "No. of Object destroyed: " << Count //It will print count in 
+			<< endl;								 //decending order
+		Count--;
+		// Number of times destructor is called
+	}
+};
+
+// driver code
+int main()
+{
+	Test t, t1, t2, t3;
+
+	return 0;
+}
+
+
+------------------------------------------------------------------------
+// inheritance
+ 
+// Single Inheritance. 
+
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+
+class A 
+{
+  public:
+    int a = 8;
+
+    void getdata()
+    {
+      cout << " Method from Class A" << endl;
+    } 
+
+};
+
+class B: public A
+{
+    public:
+      int b = 9;
+
+    void display()
+    {
+      cout << "Method from Class B" << endl;
+    }
+
+};
+
+int main()
+{  
+  B o1;
+  cout << o1.a << " " << o1.b << endl;
+  o1.getdata();
+  o1.display(); 
+  return 0;
+}
+ 
+-------------------------------------------------------
+// Multiple Inheritance. 
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+
+class A 
+{
+  public:
+    int a = 8;
+
+    void getdata()
+    {
+      cout << " Method from Class A" << endl;
+    } 
+
+};
+
+class B
+{
+    public:
+      int b = 9;
+
+    void display()
+    {
+      cout << "Method from Class B" << endl;
+    }
+
+};
+
+class C: public A , public B
+{
+  public:
+       
+};
+
+
+int main()
+{  
+  C o1;
+  cout << o1.a << " " << o1.b << endl;
+  o1.getdata();
+  o1.display(); 
+  return 0;
+}
+
+--------------------------------------------------------------------------------------
+// Hierarchical Inheritance.
+
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+class Movie
+{
+  public:
+    int a = 8;
+};
+
+class Bollywood : public Movie
+{
+    public:
+      int b = 9;
+
+    void display_B()
+    {
+      cout << "Method from Class B" << endl;
+    }
+
+};
+
+class Hollywood : public Movie
+{
+  public:
+    int c = 10;
+
+    void display_c()
+    {
+      cout << "Method from Class C" << endl;
+    } 
+
+};
+
+
+class Tollywood : public Movie
+{
+  public:
+    int d = 10;
+
+    void display_d()
+    {
+      cout << "Method from Class D" << endl;
+    } 
+
+};
+
+
+
+
+int main()
+{  
+  Bollywood B1;
+
+  cout << B1.b << " " << endl << B1.a << endl; 
+  
+  Hollywood C1;
+  
+  cout << C1.c << " " << endl << C1.a << endl; 
+  
+  
+   Tollywood D1;
+  
+   cout << D1.d << " " << endl << D1.a << endl; 
+  
+  
+  
+
+  
+  return 0;
+}
+
+-----------------------------------------------------------------------------
+// Multilevel Inheritance.
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+class A
+{
+  public:
+    void display_A()
+    {
+      cout << "Method from Class A" << endl;
+    }
+
+
+};
+
+class B : public A
+{
+    public:
+
+    void display_B()
+    {
+      cout << "Method from Class B" << endl;
+    }
+
+};
+
+class C : public B
+{
+  public:
+    void display_c()
+    {
+      cout << "Method from Class C" << endl;
+    }
+
+
+};
+
+int main()
+{  
+  C c1;
+ 
+  c1.display_A(); 
+  c1.display_B(); 
+  c1.display_c();   
+  return 0;
+}
+----------------------------------------------------------------------
+// Hybrid Inheritance.
+
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+class A
+{
+  public:
+    void display_a()
+    {
+      cout << "Method from Class A" << endl;
+    }
+
+};
+
+class B : public A
+{
+  public:
+
+    void display_b()
+    {
+      cout << "Method from Class B" << endl;
+    }
+
+};
+
+class C : public A
+{
+  public:
+    void display_c()
+    {
+      cout << "Method from Class C" << endl;
+    }
+
+};
+
+class D : public B , public C 
+{
+  public:
+    void display_d()
+    {
+      cout << "Method from Class D" << endl;
+    }
+
+};
+
+int main()
+{  
+  D d1;
+ 
+  d1.display_d(); 
+  d1.display_c(); 
+  d1.display_b();
+  // d1.display_a(); // Probalm and Erro with direct call method
+   d1.B::display_a();
+   d1.C::display_a();
+
+  return 0;
+}
+
+-------------------------------------------------------------------------
+
+//new and delete Keywords in CPP (new operator and delete operator)
+
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    // Basic Example
+    int a = 4;
+    int* ptr = &a;
+    cout<<"The value of a is "<<*(ptr)<<endl;
+  
+    return 0;
+}
+
+
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    
+    float *p = new float(40.78);
+    cout << "The value at address p is " << *(p) << endl;
+    
+    return 0;
+}
+
+#include<iostream>
+using namespace std;
+
+int main()
+{
+  
+    int *arr = new int[3];
+    arr[0] = 10;
+    arr[1] = 20;
+    arr[2] = 30;
+    cout << "The value of arr[0] is " << arr[0] << endl;
+    cout << "The value of arr[1] is " << arr[1] << endl;
+    cout << "The value of arr[2] is " << arr[2] << endl;
+   
+    return 0;
+}
+
+#include<iostream>
+using namespace std;
+
+int main()
+{
+  
+    int *arr = new int[3];
+    arr[0] = 10;
+    arr[1] = 20;
+    arr[2] = 30;
+    delete[] arr;
+    cout << "The value of arr[0] is " << arr[0] << endl;
+    cout << "The value of arr[1] is " << arr[1] << endl;
+    cout << "The value of arr[2] is " << arr[2] << endl;
+   
+    return 0;
+}
+
+
+----------------------------------------------------------------------------------
+
+// Data access from Public 
+
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+class A
+{
+  public:
+    int a = 9;
+
+    void display_a()
+    {
+      cout << "Method from Class A" << endl;
+      cout << a;
+    }
+
+};
+
+class B : public A
+{
+  public:
+    // class A
+    void display_b()
+    {
+      cout << "Method from Class B" << endl;
+    }
+
+};
+
+void fetchdata()
+{
+  A o1;
+  cout << o1.a <<
+
+}
+
+class C : public A
+{
+  public:
+    void display_c()
+    {
+      cout << "Method from Class C" << endl;
+    }
+
+};
+
+class D : public B , public C 
+{
+  public:
+    void display_d()
+    {
+      cout << "Method from Class D" << endl;
+    }
+
+};
+
+
+int main()
+{  
+  D d1;
+   
+  fetchdata();
+  d1.display_d(); 
+  d1.display_c(); 
+  d1.display_b(); 
+  // d1.display_a(); // Probalm and Erro with direct call method
+  // d1.B::display_a();
+  // d1.C::display_a();
+
+  return 0;
+}
+
+----------------------------------------------------------------
+
+// Function Overloading / Method Overloading 
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+class A
+{
+  public:
+
+    void truck()
+    {
+      cout << "Method from Class A-" << endl;
+    }
+
+    void truck(int n)
+    {
+      cout << "Method from Class A1-" << n <<endl;
+    }
+
+    void truck(int n , float f)
+    {
+      cout << "Method from Class A1-" << n <<endl << f << endl;
+    }
+
+    void truck(float n)
+    {
+      cout << "Method from Class A1-" << n <<endl;
+    }
+
+
+
+};
+
+int main()
+{  
+  A o1;
+
+  o1.truck();
+  o1.truck(25);
+  o1.truck(30,20.5)
+  o1.truck(55.55f)
+
+  
+  return 0;
+}
+
+--------------------------------------------------------------------------------
+
+// Function overriding / Method overriding
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+class A
+{
+  public:
+
+    void wear()
+    {
+      cout << "shirt - Pant Wearing" << endl;
+    } 
+
+    // void wear()
+    // {
+    //   cout << "Kurta Wearing" << endl:
+    // } 
+
+};
+
+
+class B : public A
+{
+  public:
+    // wear()
+    void wear()
+    {
+      cout << "Kurta Wearing" << endl;
+    } 
+
+};
+
+int main()
+{  
+  B o1;
+
+  o1.wear();
+  o1.A::wear();
+  
+  return 0;
+}
+
+-------------------------------------------------------------------------
+
+// Function overriding / Method overriding
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+class A
+{
+  public:
+
+    void wear()
+    {
+      cout << "shirt - Pant Wearing" << endl;
+    } 
+
+    // void wear()
+    // {
+    //   cout << "Kurta Wearing" << endl:
+    // } 
+
+};
+
+
+class B : public A
+{
+  public:
+    // wear()
+    void wear()
+    {
+      cout << "Kurta Wearing" << endl;
+      A a1;
+      a1.wear();
+    } 
+
+};
+
+
+int main()
+{  
+  B o1;
+
+  o1.wear();
+
+  return 0;
+}
+------------------------------------------------------------------------
+//Call by Value & Call by Reference in C++
+
+#include<iostream>
+using namespace std;
+
+int sum(int a, int b)
+{
+    int c = a + b;
+    return c;
+}
+
+// This will not swap a and b
+void swap(int a, int b)
+{ //temp a b
+    int temp = a;        //4   4  5   
+    a = b;               //4   5  5
+    b = temp;            //4   5  4 
+}
+
+// Call by reference using pointers
+void swapPointer(int* a, int* b)
+{ //temp a b
+    int temp = *a;          //4   4  5   
+    *a = *b;               //4   5  5
+    *b = temp;            //4   5  4 
+}
+
+// Call by reference using C++ reference Variables
+// int & 
+void swapReferenceVar(int &a, int &b)
+{ //temp a b
+    int temp = a;          //4   4  5   
+    a = b;               //4   5  5
+    b = temp;            //4   5  4 
+    // return a;
+}
+
+int main()
+{
+    int x = 4, y= 5;
+    // cout<<"The sum of 4 and 5 is "<<sum(a, b);
+    cout<<"The value of x is "<<x<<" and the value of y is "<<y<<endl;
+    // swap(x, y); // This will not swap a and b
+    // swapPointer(&x, &y); //This will swap a and b using pointer reference
+    swapReferenceVar(x, y); //This will swap a and b using reference variables
+    // swapReferenceVar(x, y) = 766; //This will swap a and b using reference variables
+    cout<<"The value of x is "<<x<<" and the value of y is "<<y<<endl; 
+    return 0;
+}
+
+------------------------------------------------------------------------
+
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+class A
+{
+  public:
+
+    void wear_1()
+    {
+      cout << "shirt - Pant Wearing - A" << endl;
+    } 
+
+};
+
+
+class B : public A
+{
+  public:
+    // wear()
+    void wear_2()
+    {
+      cout << "Kurta Wearing - B" << endl;
+    } 
+
+};
+
+
+int main()
+{  
+
+  // Pointer Object Problam
+  B *p1;
+  A a1;
+  B b1;
+
+//   p1 = &a1;
+  p1 = &b1;
+
+  p1->wear_2(); 
+
+  return 0;
+}
+
+-------------------------------------------------
+
+#include<iostream>
+using namespace std;
+
+class ShopItem
+{
+    int id;
+    float price;
+    public:
+        void setData(int a, float b)
+		{
+            id = a;
+            price = b;
+        }
+        void getData(void)
+		{
+            cout<<"Code of this item is "<< id<<endl;
+            cout<<"Price of this item is "<<price<<endl;
+        }
+};
+
+
+
+
+int main()
+{
+    int size = 3;
+    ShopItem *ptr = new ShopItem [size];
+    ShopItem *ptrTemp = ptr;
+    int p, i;
+    float q;
+    for (i = 0; i < size; i++)
+    {
+        cout<<"Enter Id and price of item "<< i+1<<endl;
+        cin>>p>>q;
+        ptr->setData(p, q);
+        ptr++; 
+    }
+
+    for (i = 0; i < size; i++)
+    {
+        cout<<"Item number: "<<i+1<<endl;
+        ptrTemp->getData();
+        ptrTemp++;
+    }
+    
+    
+    return 0;
+}
+
+-----------------------
+
+#include<iostream>
+using namespace std;
+
+class Complex
+{
+    int real, imaginary;
+    public:
+        void getData()
+		{
+            cout<<"The real part is "<< real<<endl;
+            cout<<"The imaginary part is "<< imaginary<<endl;
+        }
+
+        void setData(int a, int b)
+		{
+            real = a;
+            imaginary = b;
+        }
+
+};
+
+int main()
+{
+    Complex *ptr = new Complex;
+    (*ptr).setData(1, 54); is exactly same as
+    (*ptr).getData(); is as good as 
+
+    return 0;
+}
+
+
+
+#include<iostream>
+using namespace std;
+
+class Complex
+{
+    int real, imaginary;
+    public:
+        void getData()
+		{
+        	
+            cout<<"The real part is "<< real<<endl;
+            cout<<"The imaginary part is "<< imaginary<<endl;
+        }
+
+        void setData(int a, int b)
+		{
+            real = a;
+            imaginary = b;
+        }
+
+};
+int main()
+{
+    Complex *ptr = new Complex;
+    ptr->setData(1, 54);
+    ptr->getData(); 
+
+    // Array of Objects
+    Complex *ptr1 = new Complex[4]; 
+    ptr1->setData(1, 4); 
+    ptr1->getData();
+    return 0;
+}
+
+
+
+
+
+---------------------------------------------------------------------------------------
+// binary operator = + - * / %   
+
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+class Points
+{
+  public:
+    int x,y;
+
+    void set(int n1 , int n2)
+    {
+      this->x = n1;
+      this->y = n2;
+
+    }
+
+    void get()
+    {
+      cout << " x = "<< this->x << " y = " << this-> y << " = --- " << x + y <<endl;
+    }
+
+    Points operator+(Points n)
+    { 
+      Points temp;
+      temp.x = this-> x + n.x;
+      temp.y = this-> y + n.y;
+      return temp;
+    }
+
+
+    Points operator-(Points n)
+    { 
+      Points temp;
+      temp.x = this-> x - n.x;
+      temp.y = this-> y - n.y;
+      return temp;
+    }
+};
+
+int main()
+{
+  Points p1, p2,p3,p4;
+
+
+
+  p1.set(5,3);
+  p1.get();
+
+  p2.set(3,3);
+  p2.get();
+
+  p3 = p1 + p2;  // p3   = p1.operator+(p2)
+  p3.get();
+
+
+  // p3 = p1.operator+(p2)
+  // p3.get();
+
+  p4 = p1 - p2;  // p3   = p1.operator-(p2)
+  p4.get();
+
+
+  return 0;
+
+}
+
+--------------------------------------------------------------------------------------
+
+// unary operator = ++  --
+
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+class A
+{
+  public:
+    int x;
+
+    void set(int n)
+    {
+      this-> x = n;
+    } 
+
+    void get()
+    {
+      cout << " x ="<< this->x << endl;
+    }
+
+    void operator++(int)
+     {
+       cout << " x =" << this->x++ << endl;
+     }
+
+
+     A operator++(int)
+     {
+       A temp;
+       temp.x = this->x++;
+       return temp; 
+     }
+
+
+    A operator++()
+    {
+      A temp;
+      temp.x = ++x;
+      return temp; 
+    }
+
+
+
+};
+
+
+int main()
+{  
+  A o1 , o2;
+
+  o1.set(5);
+  o1.get();
+
+  // o1++; // o1.operator++()
+  // o1.get();
+
+  // o2 = o1++; // o1.operator++(int)
+  // o2.get();
+
+  o2 = ++o1; // o1.operator++()
+  o2.get();
+
+
+  return 0;
+}
+-------------------------------------------------------------------------------------------------
+// binary operator =  &&  < >  <=  >= || != ==
+
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+class Time 
+{ 
+  public:
+    int  hr,min,sec;
+
+    void set(int h , int m , int s)
+    {
+      this->hr = h;
+      this->min = m;
+      this->sec = s;
+
+
+    }
+
+    void get()
+    {
+     
+      cout <<  this->hr << ":" << this->min << ":" << this->sec << endl;
+
+    }
+    
+    bool operator==(Time n)
+    {
+     
+      if(hr == n.hr && min == n.min && sec==n.sec)
+      {
+        return true;
+      }
+      else
+      {
+        return false;
+      }
+
+    }
+
+
+};
+
+int main()
+{  
+  Time t1 , t2;
+
+  t1.set(4,23,45);
+  t1.get();
+  
+  t2.set(2,23,45);
+  t2.get();
+
+  if(t1 == t2)   //  t1.operator==(t2)
+  {
+    cout << "Both time are same";
+  }
+  else
+  {
+    cout << "Both time are not same";
+  }
+
+
+  return 0;
+}
+
+--------------------------------------------------------------------------------------------
+
+// Inheritance (Use of public, private and protected)
+
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+class Data
+{
+  public:
+    int p = 5;
+
+  protected:
+    int r = 7; 
+
+  private:
+    int u = 5;
+     
+
+};
+
+class PD : public Data
+{
+  public:
+    //p;
+
+  protected:
+    // r;
+
+};
+
+class PD : protected Data
+{
+  public:
+    
+
+  protected:
+    //p;
+    // r;
+
+};
+
+class PD : private Data
+{
+  public:
+
+
+  protected:
+
+
+  private:
+    //p; 
+    // r;
+};
+
+
+-------------------------------------------------------------------------------------
+
+// virtual Functions - without 
+
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+class A
+{
+  public:
+
+    void wear()
+    {
+      cout << "shirt - Pant Wearing" << endl;
+    } 
+
+};
+
+
+class B : public A
+{
+  public:
+    // wear()
+    void wear()
+    {
+      cout << "Kurta Wearing" << endl;
+      A a1;
+      a1.wear();
+    } 
+
+};
+
+
+int main()
+{  
+  // B o1;  // Object
+  // o1.wear();
+
+  // B *p1;  // pointer Object
+  // p1->wear();
+  // p1->A::wear();
+
+
+  // Pointer Object Problam
+  A *p1;
+  A a1;
+  B b1;
+
+  p1 = &a1;
+  p1 = &b1;
+
+  p1->wear(); 
+
+  return 0;
+}
+
+------------------------------------------------------------------------
+
+// virtual Functions
+
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+class A
+{
+  public:
+
+    virtual void wear() 
+    {
+      cout << "shirt - Pant Wearing" << endl;
+    } 
+
+};
+
+
+class B : public A
+{
+  public:
+    // wear()
+    void wear()
+    {
+      cout << "Kurta Wearing" << endl;
+      A a1;
+      a1.wear();
+    } 
+
+};
+
+
+int main()
+{  
+  A *p1; // Pointer Object
+
+  A a1;
+  B b1;
+
+  p1 = &a1;
+
+  // p1 = &b1;
+
+  p1->wear();
+
+
+  return 0;
+}
+
+---------------------------------------------------------------
+
+// Pure Virtual Functions (Abstract class)
+
+// Abstract class => class  never be instantiated -> no object creations
+
+// one child class requied
+
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+class A
+{
+  public:
+    virtual void movephone() = 0;   // Virtual Functions
+//    virtual void movephone_1() = 0;
+
+    void demo()   // Normal Functions 
+    {
+      cout << "This class A" << endl;
+    }
+
+};
+
+class B: public A
+{
+  public:
+    virtual void movephone() 
+    {
+      cout << "My phone  is moving ... " << endl;
+
+    }
+};
+
+
+int main()
+{ 
+  // A o1; 
+  B o1;
+
+  o1.movephone();
+  o1.demo();
+
+  return 0;
+}
+------------------------------------------------------------------------------
+// Exception Handling
+// error - occur by user / Programmer -  compiler error
+
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+int main()
+{ 
+  cout << "Hi Hello";
+  cout << "Hi Hello"
+
+  return 0;
+}
+
+// exception - Not directly occured by user
+
+
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+int main()
+{ 
+   
+  int a,b,c;
+
+  a = 5;
+  b = 0;
+
+  c = a/b;
+
+  cout << c << endl; 
+  return 0;
+}
+
+
+// Exception Handling - 1 - try block  2 - catch block 3 - throw keywords
+
+int main()
+{ 
+   
+  int a,b,c;
+  char soluations[] = "Cannot divide by zero";
+
+  int n = 23;
+  float p = 45.56;
+
+  a = 5;
+  b = 0;
+
+  try 
+  { 
+    if(b==0)
+    { 
+       throw 30;
+       throw soluations;
+       throw p;
+       throw n;
+
+    }
+    else
+    {
+      c = a/b;
+      cout << c << endl;
+    }
+  }
+
+  catch(int n)
+  {
+    cout << n << endl;
+	cout << "Cannot divide by zero" << endl;
+  }
+
+  catch(char n[])
+  {
+    cout << n << endl;
+  }
+
+  catch(...)  // general exception block
+  {
+    cout << p << endl;
+    cout << "general exception" << endl;
+
+  }
+  return 0;
+}
+
+
+
+
+
+
+

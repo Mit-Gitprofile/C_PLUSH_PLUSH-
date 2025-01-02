@@ -1,0 +1,112 @@
+/*
+    QUE-1
+    
+    Write a Program to create a Student Record System for 5 students using Encapsulation.
+Consider the below-mentioned attributes in the Student class:
+- stu_id
+- stu_name
+- stu_age
+- stu_course
+- stu_city
+- stu_email
+- stu_college
+*/
+
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+class Student
+{
+    public:
+        int stu_id;
+        char stu_name[50];
+        int stu_age;
+        char stu_course[50];
+        char stu_city[50];
+        char stu_email[50];
+        char stu_college[50];
+};
+
+int main() 
+{
+    Student s[4];
+    
+    for(int i=0 ; i<4 ; i++)
+    {
+        cout <<"stu_id : ";
+        cin  >> s[i].stu_id;
+        cout <<"stu_name : ";
+        cin  >>s[i].stu_name;
+        cout <<"stu_age : ";
+        cin  >> s[i].stu_age;
+        cout <<"stu_course : ";
+        cin  >>s[i].stu_course;
+        cout <<"stu_city : ";
+        cin  >> s[i].stu_city;
+        cout <<"stu_email : ";
+        cin  >> s[i].stu_email;
+        cout <<"stu_college : ";
+        cin  >> s[i].stu_college;
+        
+    }
+
+    return 0;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+/*
+    QUE-2
+    Write a Program to create a Customer Record System for 5 customers using
+Encapsulation. Consider the below-mentioned attributes in the Customer structure:
+- cust_id
+- cust_name
+- cust_age
+- cust_city
+- cust_mobile_number
+- cust_simcard_validity (in years)
+- cust_telecom_brand_name (like Jio, Airtel, Vi, etc.)
+*/
+
+// #include <iostream>
+// #include <cstring>
+// using namespace std;
+
+// class Student
+// {
+//     public:
+//         int cust_id;
+//         char cust_name[100];
+//         int cust_age;
+//         char cust_city[100];
+//         int cust_mobile_number;
+//         int cust_simcard_validity;
+//         char cust_telecom_brand_name[100];
+// };
+
+// int main() 
+// {
+//     Student s[4];
+    
+//     for(int i=0 ; i<4 ; i++)
+//     {
+//         cout <<"cust_id : ";
+//         cin  >> s[i].cust_id;
+//         cout <<"cust_name : ";
+//         cin  >>s[i].cust_name;
+//         cout <<"cust_age : ";
+//         cin  >> s[i].cust_age;
+//         cout <<"cust_city : ";
+//         cin  >>s[i].cust_city;
+//         cout <<"cust_mobile_number : ";
+//         cin  >> s[i].cust_mobile_number;
+//         cout <<"cust_simcard_validity : ";
+//         cin  >> s[i].cust_simcard_validity;
+//         cout <<"cust_telecom_brand_name : ";
+//         cin  >> s[i].cust_telecom_brand_name;
+        
+//     }
+
+//     return 0;
+// }

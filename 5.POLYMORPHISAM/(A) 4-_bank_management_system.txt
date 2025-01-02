@@ -1,0 +1,467 @@
+
+
+//====================================//
+//     BANK MANAGEMENT SYSTEM         //
+//====================================//
+
+
+#include <iostream>
+#include <string>       //header file
+using namespace std;
+
+class BankAccount{     // base class
+    
+    public:
+    
+        int accountNumber;
+        string accountHolderName;    //data members
+        float balance;
+        
+        BankAccount() : accountNumber(0), balance(0) 
+        {                                                               
+            accountHolderName[50]='\0';     //set all data null
+        }
+    
+    
+        
+        public: 
+        
+            virtual void getdetails() // get account details from user
+            {
+                cout<<"Enter Account Number: ";
+                cin>>accountNumber;
+                cout<<"Enter Account Holder Name: ";
+                cin.ignore();  // Take from online research
+                getline(cin, accountHolderName);  // Take from online research
+                cout << "Enter Initial Balance: ";
+                cin >> balance; 
+            }
+            
+            virtual void display()  //display data entera from user
+            {
+               cout<<endl<<"DISPLAY--->"<<endl<<endl;
+               cout<<"Account Number:"<<accountNumber<<endl;
+               cout<<"Account Holder Name:"<<accountHolderName<<endl;
+               cout<<"Initial Balance:"<<balance<<endl;
+            }
+            
+            virtual float calculateInterest() // method for Interest
+            {
+                return 0;
+            }
+            
+            virtual void withdraw(float amount) // method for withdraw money
+            {
+                if (balance>=amount)    //first check withdrew money not greator then initiniol bank balence
+                { 
+                    balance-=amount;    //substract withdrew money from initiniol bank balence
+                    cout<<"Withdrawal successful! New balance: "<<balance<<endl;
+                }
+                else 
+                {
+                    cout<<"no withdraw to balance!"<<endl;
+                }
+            }
+            
+        virtual ~BankAccount() {}  //destructor of class
+        
+};
+    
+class SavingsAccount : public BankAccount  //class for saving account
+{
+    public:
+        float interestRate;
+    
+        void getdetails() override 
+        {
+            BankAccount::getdetails();
+            cout<<"Enter Interest Rate: ";   //take interest rate from user
+            cin>>interestRate;
+        }
+    
+        void display() override 
+        {
+            BankAccount::display();
+            cout<<"Interest Rate:"<<interestRate<<"%"<<endl;    //display interest rate taken from user
+        }
+        
+        float calculateInterest() override  //calculate interest rate
+        {
+            return (balance*interestRate)/100;
+        }
+        
+        
+};
+    
+class CheckingAccount : public BankAccount // class for checking account 
+{
+    public:
+        float overdraftLimit;
+    
+        void getdetails() override 
+        {
+            BankAccount::getdetails();
+            cout<<"Enter overdraft Limit: ";    //take overdraftlimit from user
+            cin>>overdraftLimit;
+        }
+    
+        void display() override 
+        {
+            BankAccount::display();
+            cout<<"overdraft Limit="<<overdraftLimit<<endl; //display overdraftlimit taken from user
+        }
+        
+        void withdraw(float amount) override   // withdraw method for using overdraftlimit
+        {
+            if (balance+overdraftLimit>=amount) //initional balence + overdraftlimit >= enterd withdraw amount
+            {  
+                balance-=amount;
+                cout<<"Withdrawal successful! New balance is:"<<balance<<endl;
+            } 
+            else
+            {
+                cout<<"check overdraft limit!"<<endl;
+            }
+        }
+    
+};
+
+class FixedDepositAccount : public BankAccount // class for fixed deposit account
+{
+    public:
+    
+        float interestRate;
+        float term;
+    
+        void getdetails() override 
+        {
+            BankAccount::getdetails();
+            cout<<"Enter term (duration in months): ";
+            cin>>term;                                  // take term and interest rate from user
+            
+            cout<<"Enter Interest Rate: ";
+            cin>>interestRate;
+        }
+    
+        void display() override 
+        {
+            BankAccount::display();
+            cout<<"term :"<<term<<endl;
+            cout<<"Interest Rate:"<<interestRate<<"%"<<endl;  //display term and interest rate taken from user
+            cout<<"Interest:"<<calculateInterest()<<endl;
+            
+        }
+        
+        float calculateInterest() override //calculate interest rate using term rate
+        {
+            return (balance*interestRate*term)/(100*12);
+        }
+    
+};
+
+
+
+int main() 
+{
+    BankAccount* bank[100]; //pointer object of base class
+    int choice,choise, n=0;
+    double amount;  
+   
+
+    do{
+        cout<<("\n\n\n\n\n\n\n\n\t\t//====================================//\n");
+        cout<<("\t\t//  ***  BANK MANAGEMENT SYSTEM  ***  //\n");
+        cout<<("\t\t//====================================//\n");
+        cout<<("\n\n\n\n\t\t\t0. EXIT\n");
+        cout<<("\n\t\t\t1. CREATE ACCOUNT\n");              //display management system opstion
+        cout<<("\n\n\t\t* ENTER YOUR CHOISE: ");
+        cin>>choice;  // Input choice from user
+        
+
+        switch (choice) 
+        {
+            
+            case 1: // for saving account
+                 
+                   cout<<endl<<"CREATE ACCOUNT "<<n+1<<endl;
+                  
+                    cout<<"Enter Account type:"<<endl;
+                    cout<<endl<<"1. Saving Account";
+                    cout<<endl<<"2. Checking Account";
+                    cout<<endl<<"3. Fixed Deposit Account"<<endl;
+                    
+                    cout<<endl<<"ENTER YOUR CHOISE:";
+                    cin>>choise;
+                    
+                    switch(choise)
+                    {
+                        case 1:
+                             bank[n] = new SavingsAccount(); //connect SavingsAccount class
+                             bank[n]->getdetails();     // connect to getdetails method
+                             n++;  // added data ++
+                             int a;
+                             
+                         do{
+                             
+                                cout<<endl<<"==== BANK FACELITIES ===="<<endl;
+                                cout<<endl<<"1. Deposit money"<<endl;
+                                cout<<endl<<"2. Withdraw money"<<endl;          // display fecelities
+                                cout<<endl<<"3. Calculate Interest rate"<<endl;
+                                cout<<endl<<"4. Display account"<<endl;
+                                cout<<endl<<"0. Exit"<<endl<<endl;
+                                cout<<"ENTER YOUR CHOISE: ";
+                                cin>>a;
+                                
+                                switch(a)
+                                {
+                                    case 1:      // for deposit money
+                                        if(n>0) 
+                                        {
+                                            cout<<"Enter the amount to deposit:";
+                                            cin>>amount;
+                                            bank[n-1]->balance+=amount;  //[n-1] because all fecelities work in last added data account
+                                            cout<<"Deposited successfully...."<<endl;
+                                        } 
+                                        else 
+                                        {
+                                            cout<<"First create account ...!!!"<<endl;
+                                        }
+                                        break;
+                            
+                                   case 2:  //for withdraw money
+                                        if(n>0) 
+                                        {
+                                            cout<<"Enter the amount to withdraw:";
+                                            cin>>amount;
+                                            if(bank[n-1]->balance>=amount) //[n-1] because all fecelities work in last added data account
+                                            {
+                                                bank[n-1]->withdraw(amount);//[n-1] because all fecelities work in last added data account
+                                                cout<<"Withdraw successfull...."<<endl;
+                                            }
+                                            else 
+                                            {
+                                                cout<<"no withdraw to balance!"<<endl;
+                                            }
+                                        } 
+                                        else 
+                                        {
+                                            cout<<"First create account ...!!!"<<endl;
+                                        }
+                                        break;
+                                        
+                            
+                                    case 3:  // for interest rate
+                                        if(n>0) 
+                                        {
+                                            bank[0]->display(); //call method to take rate from user
+                                            float interest=bank[0]->calculateInterest();//call method to calculate interest rate taken from user
+                                            cout<<"calculated Interest is:"<<interest<<endl;
+                                        } 
+                                        else 
+                                        {
+                                            cout<<"First create account ...!!!"<<endl;
+                                        }
+                                        break;
+                            
+                                    case 4: //display all data
+                                        if(n>0) 
+                                        {
+                                            bank[0]->display();
+                                        } 
+                                        else 
+                                        {
+                                            cout<<"First create account ...!!!"<<endl;
+                                        }
+                                        break;
+                                        
+                                    case 0:
+                                        return 0;
+                            
+                                    default:
+                                        cout<<"Invalid choice!."<<endl;
+                                }
+                            }while(a!=0);
+                             
+                             break;
+                            
+                        case 2: // for checking account
+                             bank[n] = new CheckingAccount();   //connect CheckingAccount class
+                             bank[n]->getdetails();     // connect to getdetails method
+                             n++;       // added data ++
+                             int b;
+                             
+                             do{
+                             
+                                cout<<endl<<"==== BANK MANAGEMENT SYSTEM ===="<<endl;
+                                cout<<endl<<"1. Deposit money"<<endl;
+                                cout<<endl<<"2. Withdraw money"<<endl;      // display fecelities
+                                cout<<endl<<"3. Display account"<<endl;
+                                cout<<endl<<"0. Exit"<<endl<<endl;
+                                cout<<"ENTER YOUR CHOISE: ";
+                                cin>>b;
+                                
+                                switch(b)
+                                {
+                                    case 1: // for deposit money
+                                        if(n>0) 
+                                        {
+                                            cout<<"Enter the amount to deposit:";
+                                            cin>>amount;
+                                            bank[n-1]->balance+=amount;   //[n-1] because all fecelities work in last added data account
+                                            cout<<"Deposited successfully...."<<endl;
+                                        } 
+                                        else 
+                                        {
+                                            cout<<"First create account ...!!!"<<endl;
+                                        }
+                                        break;
+                            
+                                   case 2:   //for withdraw money
+                                        if(n>0) 
+                                        {
+                                            cout<<"Enter the amount to withdraw:";
+                                            cin>>amount;
+                                            if(bank[n-1]->balance>=amount) //[n-1] because all fecelities work in last added data account
+                                            {
+                                                bank[n-1]->withdraw(amount);//[n-1] because all fecelities work in last added data account
+                                                cout<<"Withdraw successfull...."<<endl;
+                                            }
+                                            else 
+                                            {
+                                                cout<<"no withdraw to balance!"<<endl;
+                                            }
+                                        } 
+                                        else 
+                                        {
+                                            cout<<"First create account ...!!!"<<endl;
+                                        }
+                                        break;
+                            
+                                    case 3:      //display all data
+                                        if(n>0) 
+                                        {
+                                            bank[0]->display();
+                                        } 
+                                        else 
+                                        {
+                                            cout<<"First create account ...!!!"<<endl;
+                                        }
+                                        break;
+                            
+                                    default:
+                                        cout<<"Invalid choice!."<<endl;
+                                        
+                                    case 0:
+                                        return 0;
+                                }
+                            }while(b!=0);
+                            
+                             break;
+                            
+                        case 3: //for fixed deposite account
+                             bank[n] = new FixedDepositAccount();   //connect FixedDepositAccount class
+                             bank[n]->getdetails();     // connect to getdetails method
+                             n++;       // added data ++
+                             int c;
+                             
+                             do{
+                             
+                                cout<<endl<<"==== BANK MANAGEMENT SYSTEM ===="<<endl;
+                                cout<<endl<<"1. Deposit money"<<endl;
+                                cout<<endl<<"2. Withdraw money"<<endl;
+                                cout<<endl<<"3. Calculate Interest rate"<<endl;     // display fecelities
+                                cout<<endl<<"4. Display account"<<endl;
+                                cout<<endl<<"0. Exit"<<endl<<endl;
+                                cout<<"ENTER YOUR CHOISE: ";
+                                cin>>c;
+                                
+                                switch(c)
+                                {
+                                    case 1:      // for deposit money
+                                        if(n>0) 
+                                        {
+                                            cout<<"Enter the amount to deposit:";
+                                            cin>>amount;
+                                            bank[n-1]->balance+=amount;   //[n-1] because all fecelities work in last added data account
+                                            cout<<"Deposited successfully...."<<endl;
+                                        } 
+                                        else 
+                                        {
+                                            cout<<"First create account ...!!!"<<endl;
+                                        }
+                                        break;
+                            
+                                   case 2:   //for withdraw money
+                                        if(n>0) 
+                                        {
+                                            cout<<"Enter the amount to withdraw:";
+                                            cin>>amount;
+                                            if(bank[n-1]->balance>=amount) //[n-1] because all fecelities work in last added data account
+                                            {
+                                                bank[n-1]->withdraw(amount);//[n-1] because all fecelities work in last added data account
+                                                cout<<"Withdraw successfull...."<<endl;
+                                            }
+                                            else 
+                                            {
+                                                cout<<"no withdraw to balance!"<<endl;
+                                            }
+                                        } 
+                                        else 
+                                        {
+                                            cout<<"First create account ...!!!"<<endl;
+                                        }
+                                        break;
+                                        
+                            
+                                    case 3:
+                                        if(n>0) 
+                                        {
+                                            bank[0]->display(); //call method to take rate from user
+                                            float interest=bank[0]->calculateInterest();    //call method to calculate interest rate taken from user
+                                            cout<<"calculated Interest is:"<<interest<<endl;
+                                        } 
+                                        else 
+                                        {
+                                            cout<<"First create account ...!!!"<<endl;
+                                        }
+                                        break;
+                            
+                                    case 4:      //display all data
+                                        if(n>0) 
+                                        {
+                                            bank[0]->display();
+                                        } 
+                                        else 
+                                        {
+                                            cout<<"First create account ...!!!"<<endl;
+                                        }
+                                        break;
+                                        
+                                    case 0:
+                                        return 0;
+                            
+                                    default:
+                                        cout<<"Invalid choice!."<<endl;
+                                }
+                            }while(c!=0);
+                             break;
+                            
+                        default:
+                            cout<<"WRONG CHOISE...";
+                            break;
+                    }
+                    break;
+ 
+            case 0:
+                cout<<"Exiting system...."<<endl;
+                return 0;
+    
+            default:
+                cout<<"Invalid choice!."<<endl;
+        }
+    }while(choice!=0);
+    
+      return 0;
+}
+
+

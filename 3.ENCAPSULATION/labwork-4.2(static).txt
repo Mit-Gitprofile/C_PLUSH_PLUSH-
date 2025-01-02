@@ -1,0 +1,86 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Hotel
+{
+    public:
+    
+        int hotel_id;
+        char hotel_name[100];
+        static char hotel_type[100];
+        int hotel_rating;
+        char hotel_location[100];
+        int hotel_establish_year;
+        int hotel_staff_quantity;
+        int hotel_room_quantity;
+        
+    
+    
+};
+
+char Hotel::hotel_type[100] = "HOTEL";
+
+int main()
+{
+    
+    int n,i;
+    
+    cout<<"enter N numbers of hotel:";
+    cin>>n;
+    
+    Hotel h1[n];
+    
+    for(i=0;i<n;i++)
+    {
+        cout<<"Enter hotel id:";
+        cin>>h1[i].hotel_id;
+        
+        cout<<"Enter hotel name:";
+        cin>>h1[i].hotel_name;
+        
+        cout<<"Enter hotel type(hotel-motel):";
+        cin>>h1[i].hotel_type;
+        
+        cout<<"Enter hotel rating(1-7)star:";
+        cin>>h1[i].hotel_rating;
+        
+        cout<<"Enter hotel location:";
+        cin>>h1[i].hotel_location;
+        
+        cout<<"Enter hotel establish year:";
+        cin>>h1[i].hotel_establish_year;
+        
+        cout<<"Enter hotel staff quantity:";
+        cin>>h1[i].hotel_staff_quantity;
+        
+        cout<<"Enter hotel room quantity:";
+        cin>>h1[i].hotel_room_quantity;
+        
+    }
+    
+    for(i=0;i<n;i++)
+    {
+        cout<<"HOTEL:-"<<i+1<<endl;
+        
+        cout<<"HOTEL id:"<<h1[i].hotel_id<<endl;
+        
+        cout<<"HOTEL name:"<<h1[i].hotel_name<<endl;
+        
+        cout<<"HOTEL type(hotel-motel):"<<h1[i].hotel_type<<endl;
+        
+        cout<<"HOTEL rating(1-7)star:"<<h1[i].hotel_rating<<endl;
+        
+        cout<<"HOTEL location:"<<h1[i].hotel_location<<endl;
+        
+        cout<<"HOTEL establish year:"<<h1[i].hotel_establish_year<<endl;
+        
+        cout<<"HOTEL staff quantity:"<<h1[i].hotel_staff_quantity<<endl;
+        
+        cout<<"HOTEL room quantity:"<<h1[i].hotel_room_quantity<<endl;
+        
+    }
+    
+
+    return 0;
+}

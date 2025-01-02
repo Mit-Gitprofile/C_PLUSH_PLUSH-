@@ -1,0 +1,49 @@
+//============================//
+//   CALCULATOR IN C++        //
+//============================//
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int a,b,c;
+    
+    cout<<"Enter first number:";
+    cin>>a;
+    
+    cout<<"Enter second number:";
+    cin>>b;
+    
+    cout<<" 1.->(+):"<<endl;
+    cout<<" 2.->(-):"<<endl;
+    cout<<" 3.->(*):"<<endl;
+    cout<<" 4.->(/):"<<endl;
+    cout<<"Enter your choise:";
+    cin>>c;
+    
+    switch(c)
+    {
+        case 1:
+            cout<<"Sum is:"<<a+b<<endl;
+            break;
+            
+        case 2:
+            cout<<"Substration is:"<<a-b<<endl;
+            break;
+            
+        case 3:
+            cout<<"Multiplication is:"<<a*b<<endl;
+            break;
+            
+        case 4:
+            cout<<"Devision is:"<<a/b<<endl;
+            break;
+            
+        default:
+            cout<<"wrong choise...!!!";
+    }
+    
+
+    return 0;
+}

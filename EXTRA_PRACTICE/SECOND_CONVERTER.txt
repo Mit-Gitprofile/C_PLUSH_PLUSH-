@@ -1,0 +1,25 @@
+//======================================//
+//    DAY :  HOUR : MINUTE : SECOND     //
+//======================================//
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+   int second;
+   
+   cout<<"Enter seconds:";
+   cin>>second;
+   
+   int day=second/(24*3600);
+   int hour=(second%(24*3600))/3600;
+   int min=(second%3600)/60;
+   int sec=second%60;
+   
+   
+   cout<<"day :"<<"hour :"<<"min :"<<"sec "<<endl;
+   cout<<" "<<day<<"  :  "<<hour<<"  : "<<min<<"  : "<<sec;
+
+    return 0;
+}

@@ -1,0 +1,152 @@
+//==============================================================================
+
+     // QUESTION-1
+
+/*Write a Program to create an Employee Record System using the Class & Object of
+any 5 employees. Consider the below-mentioned attributes in the Employee class:
+- emp_id
+- emp_name
+- emp_age
+- emp_role
+- emp_salary
+- emp_city
+- emp_experience*/
+
+#include <iostream>
+using namespace std;
+
+class Employ
+{
+    public:
+        int emp_id;
+        char emp_name[60];
+        int emp_age;
+        char emp_role[60];
+        int emp_salary;
+        char emp_city[60];
+        int emp_experience;
+        char emp_company_name[100];
+}e[5];
+
+int main()
+{
+    for(int i=1;i<=5;i++)
+    {
+        cout<<endl<<"  EMPLOY NO.:"<<i;
+        cout<<endl<<"Enter employ id:";
+        cin>>e[i].emp_id;
+        
+        cout<<"Enter employ name:";
+        cin>>e[i].emp_name;
+        
+        cout<<"Enter employ age:";
+        cin>>e[i].emp_age;
+        
+        cout<<"Enter employ role:";
+        cin>>e[i].emp_role;
+        
+        cout<<"Enter employ salary:";
+        cin>>e[i].emp_salary;
+        
+        cout<<"Enter employ city:";
+        cin>>e[i].emp_city;
+        
+        cout<<"Enter employ expirence(in year):";
+        cin>>e[i].emp_experience;
+        
+        cout<<"Enter employ company:";
+        cin>>e[i].emp_company_name;
+        
+        
+        
+    }
+    
+    for(int i=1;i<=5;i++)
+    {
+        cout<<endl<<" EMPLOY NO.:"<<i;
+        cout<<endl<<"ID:"<<e[i].emp_id<<endl;
+        
+        cout<<"NAME:"<<e[i].emp_name<<endl;
+        
+        cout<<"aAGE:"<<e[i].emp_age<<endl;
+        
+        cout<<"ROLE:"<<e[i].emp_role<<endl;
+        
+        cout<<"SALARY:"<<e[i].emp_salary<<endl;
+        
+        cout<<"CITY:"<<e[i].emp_city<<endl;
+        
+        cout<<"EXPIRENCE:"<<e[i].emp_experience<<endl;
+        
+        cout<<"COMPANY:"<<e[i].emp_company_name<<endl;
+        
+    }
+    
+    return 0;
+}
+
+//==============================================================================
+
+     // QUESTION-2
+
+/*Write a Program to create a Car Record System using the Class & Object of any 4
+Cars. Consider the below-mentioned attributes in the Car class:
+- car_id
+- car_company_name
+- car_color
+- car_model
+- car_release_year*/
+
+#include <iostream>
+using namespace std;
+
+class Employ
+{
+    public:
+        int car_id;
+        char car_company_name[100];
+        char car_color[60];
+        int car_model;
+        int car_release_year;
+        
+}e[4];
+
+int main()
+{
+    for(int i=1;i<=4;i++)
+    {
+        cout<<endl<<" CAR NO.:"<<i;
+        cout<<endl<<"Enter car id:";
+        cin>>e[i].car_id;
+        
+        cout<<"Enter car company name:";
+        cin>>e[i].car_company_name;
+        
+        cout<<"Enter car color:";
+        cin>>e[i].car_color;
+        
+        cout<<"Enter car model:";
+        cin>>e[i].car_model;
+        
+        cout<<"Enter car release year:";
+        cin>>e[i].car_release_year;
+        
+    }
+    
+    for(int i=1;i<=4;i++)
+    {
+        cout<<endl<<" CAR NO.:"<<i;
+        cout<<endl<<"CAR ID:"<<e[i].car_id<<endl;
+        
+        cout<<"CAR COMPANY NAME:"<<e[i].car_company_name<<endl;
+        
+        cout<<"CAR COLOR:"<<e[i].car_color<<endl;
+        
+        cout<<"CAR MODEL:"<<e[i].car_model<<endl;
+        
+        cout<<"RELEASE YEAR:"<<e[i].car_release_year<<endl;
+        
+    }
+    
+    return 0;
+}

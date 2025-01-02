@@ -1,0 +1,96 @@
+//Q.1 Time Converter
+
+#include <iostream>
+using namespace std;
+
+class TimeConverter
+{
+    public:
+    
+        int hour;
+        int minute;       //data members
+        int extra_seconds;
+    
+    public:    
+    
+       void converter(int second)
+        {
+           hour=(second/3600); // count hour
+           minute=(second/60)%60;  // count minutes
+           extra_seconds=second%60; // counts extra seconds
+           
+           cout<<" "<<"hour"<<" : "<<"min"<<" : "<<"sec"<<endl;
+           cout<<"    "<<hour<<" : "<<minute<<" : "<<extra_seconds;
+           
+                 //  print hour minute and seconds
+            
+        }
+    
+};
+
+int main()
+{
+    TimeConverter T1;  // object of class
+    
+    int second;
+    
+    cout<<"Enter seconds:";  //take seconds from user
+    cin>>second;
+    
+    T1.converter(second);  //call converter method in class
+    
+    return 0;
+}
+
+
+//==============================================================================
+
+//Q.2 Seconds Converter
+
+#include <iostream>
+using namespace std;
+
+class TimeConverter
+{
+    public:
+    
+        //data members
+        int convert_seconds;
+    
+    public:    
+    
+       void converter(int hour,int minute,int second)
+        {
+            
+           convert_seconds=(hour*3600)+(minute*60)+second; // convert seconds
+           
+           cout<<"TOTAL SECONDS ->   "<<convert_seconds;   // print seconds
+            
+        }
+    
+};
+
+int main()
+{
+    TimeConverter T1;  // object of class
+    
+    int hour;
+    int minute;
+    int second;
+    
+    cout<<"Enter hour:";  //take hour from user
+    cin>>hour;
+    
+    cout<<"Enter minute:";  //take minute from user
+    cin>>minute;
+    
+    cout<<"Enter second:";  //take seconds from user
+    cin>>second;
+    
+    T1.converter(hour,minute,second);  //call converter method in class
+    
+    return 0;
+}
+
+
+//==============================================================================

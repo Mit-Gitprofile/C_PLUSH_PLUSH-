@@ -1,0 +1,201 @@
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+// Base class: Employee
+class Employee {
+protected:
+    int employee_id;
+    string name;
+    int age;
+    double salary;
+
+public:
+    // Constructor
+    Employee(int id, string n, int a, double s)
+        : employee_id(id), name(n), age(a), salary(s) {}
+
+    // Getter and setter methods
+    void setEmployeeId(int id) { employee_id = id; }
+    void setName(const string& n) { name = n; }
+    void setAge(int a) { age = a; }
+    void setSalary(double s) { salary = s; }
+
+    int getEmployeeId() const { return employee_id; }
+    string getName() const { return name; }
+    int getAge() const { return age; }
+    double getSalary() const { return salary; }
+
+    // Virtual display method (to be overridden in derived classes)
+    virtual void display() const {
+        cout << "Employee ID: " << employee_id << endl;
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+        cout << "Salary: " << salary << endl;
+    }
+
+    // Virtual destructor
+    virtual ~Employee() {}
+};
+
+// Derived class: FullTimeEmployee
+class FullTimeEmployee : public Employee {
+private:
+    double bonus;
+
+public:
+    // Constructor
+    FullTimeEmployee(int id, string n, int a, double s, double b)
+        : Employee(id, n, a, s), bonus(b) {}
+
+    // Override display method
+    void display() const override {
+        Employee::display();
+        cout << "Bonus: " << bonus << endl;
+    }
+
+    void setBonus(double b) { bonus = b; }
+    double getBonus() const { return bonus; }
+};
+
+// Derived class: PartTimeEmployee
+class PartTimeEmployee : public Employee {
+private:
+    int hours_worked;
+
+public:
+    // Constructor
+    PartTimeEmployee(int id, string n, int a, double s, int h)
+        : Employee(id, n, a, s), hours_worked(h) {}
+
+    // Override display method
+    void display() const override {
+        Employee::display();
+        cout << "Hours Worked: " << hours_worked << endl;
+    }
+
+    void setHoursWorked(int h) { hours_worked = h; }
+    int getHoursWorked() const { return hours_worked; }
+};
+
+// Employee Management System
+class EmployeeManagementSystem {
+private:
+    vector<Employee*> employees;
+
+public:
+    // Add an employee (either FullTime or PartTime)
+    void addEmployee() {
+        int choice;
+        cout << "Enter 1 for Full Time Employee or 2 for Part Time Employee: ";
+        cin >> choice;
+
+        int id, age, hours;
+        string name;
+        double salary, bonus;
+
+        cout << "Enter Employee ID: ";
+        cin >> id;
+        cout << "Enter Name: ";
+        cin.ignore();  // to clear the buffer
+        getline(cin, name);
+        cout << "Enter Age: ";
+        cin >> age;
+        cout << "Enter Salary: ";
+        cin >> salary;
+
+        if (choice == 1) {  // FullTimeEmployee
+            cout << "Enter Bonus: ";
+            cin >> bonus;
+            employees.push_back(new FullTimeEmployee(id, name, age, salary, bonus));
+        } else if (choice == 2) {  // PartTimeEmployee
+            cout << "Enter Hours Worked: ";
+            cin >> hours;
+            employees.push_back(new PartTimeEmployee(id, name, age, salary, hours));
+        } else {
+            cout << "Invalid choice!" << endl;
+        }
+    }
+
+    // Display all employees
+    void displayAllEmployees() const {
+        if (employees.empty()) {
+            cout << "No employees to display!" << endl;
+            return;
+        }
+
+        for (const auto& emp : employees) {
+            emp->display();
+            cout << "----------------------------" << endl;
+        }
+    }
+
+    // Delete an employee by ID
+    void deleteEmployee() {
+        int id;
+        cout << "Enter Employee ID to delete: ";
+        cin >> id;
+
+        auto it = employees.begin();
+        bool found = false;
+        while (it != employees.end()) {
+            if ((*it)->getEmployeeId() == id) {
+                delete *it;
+                it = employees.erase(it);
+                found = true;
+                cout << "Employee ID " << id << " has been deleted." << endl;
+                break;
+            } else {
+                ++it;
+            }
+        }
+
+        if (!found) {
+            cout << "Employee with ID " << id << " not found." << endl;
+        }
+    }
+
+    // Destructor to free dynamically allocated memory
+    ~EmployeeManagementSystem() {
+        for (auto emp : employees) {
+            delete emp;
+        }
+        employees.clear();
+    }
+};
+
+int main() {
+    EmployeeManagementSystem system;
+    int choice;
+
+    do {
+        cout << "\n--- Employee Management System ---\n";
+        cout << "1. Add Employee\n";
+        cout << "2. Display All Employees\n";
+        cout << "3. Delete Employee\n";
+        cout << "4. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                system.addEmployee();
+                break;
+            case 2:
+                system.displayAllEmployees();
+                break;
+            case 3:
+                system.deleteEmployee();
+                break;
+            case 4:
+                cout << "Exiting system and freeing memory." << endl;
+                break;
+            default:
+                cout << "Invalid choice. Please try again." << endl;
+        }
+    } while (choice != 4);
+
+    return 0;
+}

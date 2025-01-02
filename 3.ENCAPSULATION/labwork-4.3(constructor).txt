@@ -1,0 +1,195 @@
+
+
+//que-1
+
+/*Write a Program to get and display N numbers of Diamond companies information
+using encapsulation and use of Parameterised Constructor by including below
+mentioned attributes:
+- comp_id
+- comp_name
+- comp_staff_quantity
+- comp_revenue (per year)
+- comp_import_raw_diamonds (no. of raw diamonds
+imported per year)
+- comp_export_diamonds (no. of diamonds per year)
+- comp_ceo (name of CEO of the company)*/
+#include <iostream>
+#include<string.h>
+using namespace std;
+
+class DiamondCompany{
+    public:
+        int comp_id;
+        char comp_name[50];
+        int comp_staff_quantity;
+        double comp_revenue;
+        int comp_import_raw_diamonds;
+        int comp_export_diamonds;
+        char comp_ceo[50];
+        
+            
+    void display() 
+    {
+        cout<<"Company ID: "<<comp_id<<endl;
+        cout<<"Company Name: "<<comp_name<<endl;
+        cout<<"Staff Quantity: "<<comp_staff_quantity<<endl;
+        cout<<"Annual Revenue: $"<<comp_revenue<<" million"<<endl;
+        cout<<"Raw Diamonds Imported per Year: "<<comp_import_raw_diamonds<<" diamonds"<<endl;
+        cout<<"Diamonds Exported per Year: "<<comp_export_diamonds<<" diamonds" << endl;
+        cout<<"CEO: "<<comp_ceo<<endl;
+        cout<<"--------------------------------------------------"<<endl;
+    }
+    
+};
+
+int main()
+{
+    int n;
+    cout<<"ENTER NO TO ENTER DETAILS OF DIMONDCOMPANES:";
+    cin>>n;
+    
+    DiamondCompany b1[100];
+    
+     for (int i=1;i<=n;i++) 
+     {
+
+        cout << "\nEnter details for company ->"<<i<< ":\n";
+        cout<<"Company ID: ";
+        cin>>b1[i].comp_id;
+        
+        cout << "Company Name: ";
+        cin>>b1[i].comp_name;
+        
+        cout<<"Number of Staff: ";
+        cin>>b1[i].comp_staff_quantity;
+        
+        cout<<"Annual Revenue (in million): ";
+        cin>>b1[i].comp_revenue;
+        
+        cout<<"Raw Diamonds Imported per Year: ";
+        cin>>b1[i].comp_import_raw_diamonds;
+        
+        cout<<"Diamonds Exported per Year: ";
+        cin>>b1[i].comp_export_diamonds;
+        
+        cout<<"CEO Name: ";
+        cin>>b1[i].comp_ceo; 
+
+        //d1 = Diamond(id, name, staff_quantity, revenue,raw_diamonds, export_diamonds, ceo);
+    }
+
+    
+    cout << "\nDisplaying all company details:\n";
+    for(int i=1;i<=n;i++) 
+    {
+        b1[i].display();
+    }
+
+    return 0;
+}
+
+//==============================================================================
+//==============================================================================
+
+
+//que-2
+
+/*Write a Program to get and display N numbers of Fast Food cafe information using
+encapsulation and the use of a Default constructor by including the below-mentioned
+attributes:- cafe_id
+- cafe_name
+- cafe_type (like a rooftop or normal)
+- cafe_rating (like 1 Star, 2 Start, ..., 5 Star)
+- cafe_location (city name)
+- cafe_establish_year
+- cafe_staff_quantity*/
+
+#include <iostream>
+#include <cstring>  // For strcpy() to copy strings
+using namespace std;
+
+class FastFoodCafe {
+private:
+    int cafe_id;
+    char cafe_name[50];
+    char cafe_type[20];
+    int cafe_rating;  // Rating as an integer (1 to 5)
+    char cafe_location[50];
+    int cafe_establish_year;
+    int cafe_staff_quantity;
+
+public:
+    // Default constructor to initialize data members
+    FastFoodCafe() {
+        cafe_id = 0;
+        strcpy(cafe_name, "Unknown");
+        strcpy(cafe_type, "Normal");
+        cafe_rating = 0;
+        strcpy(cafe_location, "Unknown");
+        cafe_establish_year = 0;
+        cafe_staff_quantity = 0;
+    }
+
+    // Method to input details of the cafe
+    void inputCafeDetails() {
+        cout << "\nEnter Cafe Details: \n";
+        cout << "Cafe ID: ";
+        cin >> cafe_id;
+        cin.ignore();  // To ignore the newline character after the integer input
+
+        cout << "Cafe Name: ";
+        cin.getline(cafe_name, 50);  // To input multi-word name
+
+        cout << "Cafe Type (e.g., rooftop or normal): ";
+        cin.getline(cafe_type, 20);  // To input cafe type
+
+        cout << "Cafe Rating (1 to 5): ";
+        cin >> cafe_rating;
+
+        cin.ignore();  // To ignore the newline character after reading rating
+
+        cout << "Cafe Location (city name): ";
+        cin.getline(cafe_location, 50);  // To input location
+
+        cout << "Cafe Establishment Year: ";
+        cin >> cafe_establish_year;
+
+        cout << "Cafe Staff Quantity: ";
+        cin >> cafe_staff_quantity;
+    }
+
+    // Method to display cafe details
+    void displayCafeDetails() const {
+        cout << "\nCafe ID: " << cafe_id << endl;
+        cout << "Cafe Name: " << cafe_name << endl;
+        cout << "Cafe Type: " << cafe_type << endl;
+        cout << "Cafe Rating: " << cafe_rating << " Star(s)" << endl;
+        cout << "Cafe Location: " << cafe_location << endl;
+        cout << "Established Year: " << cafe_establish_year << endl;
+        cout << "Staff Quantity: " << cafe_staff_quantity << endl;
+        cout << "------------------------------------------" << endl;
+    }
+};
+
+int main() {
+    int N;  // Number of cafes
+    cout << "Enter the number of fast food cafes: ";
+    cin >> N;
+
+    // Array to store cafe objects
+    FastFoodCafe cafes[10];
+
+    // Input details for each cafe
+    for (int i = 0; i < N; ++i) {
+        cout << "\nEnter details for cafe " << i + 1 << ":";
+        cafes[i].inputCafeDetails();
+    }
+
+    // Display details of all cafes
+    cout << "\nDisplaying all cafe details:\n";
+    for (int i = 0; i < N; ++i) {
+        cafes[i].displayCafeDetails();
+    }
+
+    return 0;
+}

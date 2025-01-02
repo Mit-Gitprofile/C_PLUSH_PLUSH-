@@ -1,0 +1,74 @@
+//   LABWORK:- 1
+
+/* Q.1 Write a Program to find all even elements from a given 1D array.
+For example,
+Input:
+Enter array size: 5
+Enter array elements:
+a[0] = 12
+a[1] = 42
+a[2] = 15
+a[3] = 55
+a[4] = 26
+
+Output:
+Even elements of an Array: 12, 42, 26*/
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int arr[5]={12,42,15,55,26};
+    
+    for(int i=0;i<5;i++)
+    {
+        if(arr[i]%2==0)
+        {
+            cout<<"arr["<<i<<"]=";
+            cout<<arr[i]<<endl;
+        }
+        
+    }
+    
+    return 0;
+}
+
+//==============================================================================
+
+/*Q.2 Write a Program to find leap years between two given numbers and store 
+them in an array. And then print that array.
+For example,
+Input:
+Enter the first number: 2020
+
+Enter the second number: 2040
+
+Output:
+The array is: 2020, 2024, 2028, 2032, 2036, 2040*/
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int syear;
+    int lyear,i;
+    
+    cout<<"Enter year:";
+    cin>>syear;
+    
+    cout<<"Enter year:";
+    cin>>lyear;
+    
+    cout<<"Leap year:";
+    for(i=syear;i<=lyear;i++)
+    {
+        if((i%400==0&&i%100!=0)||i%4==0)
+        {
+            cout<<i<<",";
+        }
+    }
+    
+    return 0;
+}

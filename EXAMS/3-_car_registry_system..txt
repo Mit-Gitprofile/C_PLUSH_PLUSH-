@@ -1,0 +1,335 @@
+//=========================//
+//   CAR REGISTRY SYSTEM   //
+//=========================//
+
+
+
+#include <iostream>
+using namespace std;
+
+class Vehical{
+    public:
+     
+        int vehicalid;
+        char manufacturer[50];
+        char model[60];
+        int year;
+        
+     Vehical() : vehicalid(0), year(0) {         // virtual used to connection of other class to set data
+        manufacturer[0] = '\0';                  // null all data member to set the values
+        model[0] = '\0';
+    }
+     
+    public: 
+        virtual void getdetails()                // this method get value from user
+        {
+           cout<<"enter vehical id:";
+           cin>>vehicalid;
+           cout<<"enter vehical manufacturer company:";
+           cin>>manufacturer;
+           cout<<"enter vehical model:";
+           cin>>model;
+           cout<<"enter manufacturer year:";
+           cin>>year; 
+        }
+        
+        virtual void display()                    // this method is used to display data
+        {
+           cout<<endl<<"DISPLAY--->"<<endl<<endl;
+           cout<<"Vehical id:"<<vehicalid<<endl;
+           cout<<"Vehical manufacturer:"<<manufacturer<<endl;
+           cout<<"Vehical model:"<<model<<endl;
+           cout<<"Manufacturer year:"<<year<<endl;
+        }
+        
+         virtual void search_vehical()          // this method for display searched id records
+        {
+           cout<<"SEARCH--->"<<endl;
+           display();
+        }
+};
+
+
+class Car : public Vehical{
+    public:
+    
+    char fuelType[100];
+    
+    public: 
+        void getdetails()
+        {
+            Vehical::getdetails();             //scope resolution operator to connect base(vehical )class
+           cout<<"enter vehical fuel Type(petrol / diesel / electric):";
+           cin>>fuelType;
+          
+        }
+        
+        
+        void display () override              // override and scope resolution used to connect this display method to main base class vehical display method
+        {
+            Vehical::display();
+           cout<<"vehical fuel Type:"<<fuelType<<endl;//display fuel type with base details
+        }
+
+};
+
+
+class ElectricCar : public Car{
+    public:
+    
+    char batteryCapacity[100];
+    
+    public: 
+        void getdetails()
+        {
+            Car::getdetails();  		 //scope resolution operator to connect base(vehical )class
+           cout<<"enter vehical battery Capacity:";
+           cin>>batteryCapacity;
+        }
+        
+         void display() override	// override and scope resolution used to connect this display method to main base class vehical display method
+        {
+            Car::display(); 
+           cout<<"vehical battery Capacity:"<<batteryCapacity<<endl;//display battery Capacity with base details
+        }
+    
+};
+
+
+class Aircraft : public Car{
+    public:
+    
+    char flightRange[100];
+    
+    public: 
+        void getdetails()			 //scope resolution operator to connect base(vehical )class
+        {
+           Car::getdetails(); 
+           cout<<"enter vehical flight Range:";
+           cin>>flightRange ;
+        }
+        
+         void display() override	// override and scope resolution used to connect this display method to main base class vehical display method
+        {
+           Car::display(); 
+           cout<<"vehical flight Range:"<<flightRange<<endl;  //display flight Range with base details
+        }
+    
+};
+
+
+class FlyingCar : public Car {
+    public:
+    
+    char flyingheight[100];
+    
+    public: 
+        void getdetails()			 //scope resolution operator to connect base(vehical )class
+        {
+           Car::getdetails(); 
+           cout<<"enter vehical flying height:";
+           cin>>flyingheight ;
+        }
+        
+         void display() override	// override and scope resolution used to connect this display method to main base class vehical display method
+        {
+           Car::display(); 
+           cout<<"vehical flying height:"<<flyingheight<<endl;	//display flying height with base details	
+        }
+    
+};
+
+
+class SportsCar : public ElectricCar{
+    public:
+    
+    char topSpeed[100];
+    
+    public: 
+        void getdetails()			 //scope resolution operator to connect base(vehical )class
+        {
+            ElectricCar::getdetails();
+           cout<<"enter vehical top Speed:";
+           cin>>topSpeed ;
+        }
+        
+         void display() override	// override and scope resolution used to connect this display method to main base class vehical display method
+        {
+            ElectricCar::display();	
+           cout<<"vehical top Speed:"<<topSpeed<<endl ;	//display topSpeed with base details
+
+        }
+    
+};
+
+
+class Sedan : public Car {
+    public:
+    
+     void getdetails()			 //scope resolution operator to connect base(vehical )class
+     {
+        Car::getdetails();
+     }
+
+    void display() override	// override and scope resolution used to connect this display method to main base class vehical display method
+    {
+        Car::display();		//display fuel type with base details
+
+    }
+    
+};
+
+
+class SUV : public Car  {
+    public:
+    
+    void getdetails()			 //scope resolution operator to connect base(vehical )class
+     {
+        Car::getdetails();
+     }
+
+    void display() override	// override and scope resolution used to connect this display method to main base class vehical display method
+    {
+        Car::display();		//display fuel type with base details
+
+    }
+     
+};
+
+
+int main()
+{
+    
+    Vehical* v1[100];   //pointer array object of base classs
+    int ch,choise,totalvehical=0,n=0;
+    
+    do{
+        cout<<endl<<endl<<"====  VEHICLE REGISTRY SYSTEM  ===="<<endl<<endl;
+        cout<<endl<<"1. Add a vehicle (of a different type)"<<endl;
+        cout<<endl<<"2. View all vehicles"<<endl;				//display system function to user
+        cout<<endl<<"3. Search by Id"<<endl;
+        cout<<endl<<"4. View total number of vehicals" << endl;
+        cout<<endl<<"5. Exit"<<endl<<endl;
+        
+        cout<<"ENTER YOUR CHOISE:";
+        cin>>ch;
+        
+        switch(ch)		//switch case to perform all functionality of system
+        {
+            case 1:
+             
+               cout<<"Add vehical for vehical "<<n+1<<endl;
+              
+               
+                cout<<endl<<"Enter vehical type:";
+                cout<<endl<<"1. Car";
+                cout<<endl<<"2. ElectricCar";
+                cout<<endl<<"3. Aircraft";
+                cout<<endl<<"4. FlyingCar";	//diffrent types of add car details
+                cout<<endl<<"5. SportsCar";
+                cout<<endl<<"6. Sedan";
+                cout<<endl<<"7. SUV";
+                
+                cout<<endl<<"ENTER YOUR CHOISE:";
+                cin>>choise;
+                
+                switch(choise)		//switch case to perform choise of user about different car type
+                {
+                    case 1:
+                        v1[n] = new Car();
+                        break;
+                        
+                    case 2:
+                         v1[n] = new ElectricCar();  //new key used to connect class
+                        
+                        break;
+                        
+                    case 3:
+                         v1[n] = new  Aircraft();
+                        
+                        break;
+                        
+                    case 4:
+                         v1[n] = new FlyingCar();
+                        
+                        break;
+                        
+                    case 5:
+                        v1[n] = new SportsCar();  	//new key used to connect class
+                       
+                        break;
+                        
+                    case 6:
+                        v1[n] = new Sedan();
+                        
+                        break;
+                        
+                    case 7:
+                        v1[n] = new SUV();
+                    
+                        break;
+                        
+                    default:
+                        cout<<"WRONG CHOISE...";
+                        break;
+                }
+                v1[n]->getdetails();
+                n++;
+                totalvehical++;
+                cout<<endl<<"DATA INSERT SUCCESSFULLY...";
+                break;
+                
+            case 2:
+                if(n==0)
+                {
+                    cout << "NO DATA TO DISPLAY..." << endl;
+                } 
+                else 
+                {
+                    for(int i=0;i<n;i++) 
+                    {						//case 2: for display all records
+                        v1[i]->display();
+                    }
+                }
+                break;
+                
+            case 3:
+                int search;
+                cout<<endl;
+                cout<<"Search car for vehical id:";
+                cin>>search;
+                cout<<endl;
+                
+                for(int i=0;i<n;i++)
+                {
+                    if(v1[i]->vehicalid==search)
+                    {
+                        v1[i]->search_vehical();
+                    }						// case 3: for search car by id
+                    else
+                    {
+                        cout<<search<<" ID IS NOT FOUND...";
+                    }
+                }
+                break;
+                
+            case 4:
+                cout<<"Total number of vehicals:"<<totalvehical<<endl;     // case 4: for get details of total vehicals
+                break;
+                
+            case 5:
+                cout<<"Exiting system....";
+                return 0;						// case 5: for exiting system
+                break;
+                
+            default:
+                cout<<"WRONG CHOISE...";
+                break;
+        }
+        
+    }while(ch!=5);
+    
+    
+
+    return 0;
+}

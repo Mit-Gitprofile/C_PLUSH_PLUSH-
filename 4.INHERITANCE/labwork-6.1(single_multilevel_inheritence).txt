@@ -1,0 +1,119 @@
+//QUE-1
+
+/*Write a Program to find the sum of all three number’s cubes by implementing
+single-level inheritance: Class X->Class Y
+- Class X has the following members: a, b & c attributes in integer data type
+- Class Y has the following members: setData() and getData() methods*/
+
+
+// #include <iostream>
+// using namespace std;
+
+// class X{
+//     public:
+    
+//     int a,b,c;
+// };
+
+// class Y:public X{
+//     public:
+    
+    
+//     void setdata(int x,int y,int z)
+//     {
+//         a=x;
+//         b=y;
+//         c=z;
+//     }
+//      public:
+     
+//      void getdata()
+//     {
+//         int sum =(a*a*a)+(b*b*b)+(c*c*c);
+//         cout<<"Sum of cubes of "<<a<<", "<<b<<", and "<<c<<" is:"<<sum<<endl;
+//     }
+    
+// };
+
+// int main()
+// {
+//     Y y1;
+    
+//     y1.setdata(2,3,4);
+//     y1.getdata();
+
+//     return 0;
+// }
+
+//==============================================================================
+//==============================================================================
+
+
+//QUE-2
+
+/*Write a Program to convert a given degree Celsius temperature into Fahrenheit and
+convert that Fahrenheit temperature into Kelvin by implementing multilevel
+inheritance: Class P -> Class Q -> Class R
+- Class P has the following members: temperature attribute in float
+- Class Q has the following members: toFehrenheit() method
+- Class R has the following members: toKelvin() method*/
+
+
+#include <iostream>
+using namespace std;
+
+class P{
+    public:
+        float celcious;
+        
+        void get_data(){
+            cout<<"Enter temperature in celcious :";
+            cin>>celcious;
+        }
+};
+
+class Q : public P{
+    public:
+        void toFehrenheit()
+        {
+            float Fahrenheit = (celcious * 1.8) + 32;
+            
+            cout<<"tempreture to Fahrenheit: "<<Fahrenheit<<endl;
+        }
+};
+
+class R : public Q{
+    public:
+        void toKelvin()
+        {
+            float K=celcious+273.15;
+            
+            cout<<"tempreture in kelvin: "<<K<<endl;
+        }
+};
+
+int main() {
+   R r1;
+   
+   r1.get_data();
+   r1.toFehrenheit();
+   r1.toKelvin();
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,129 @@
+//QUE-1
+
+/*Write a Program to print the rate of interest of different banks using hierarchical
+inheritance:
+- Class RBI -> Class SBI
+- Class RBI -> Class BOB
+- Class RBI -> Class ICICI
+- inherit rate attribute and getROI() method in all child classes
+*/
+
+#include <iostream>
+using namespace std;
+
+class RBI{
+    public:
+    
+       void getrate(){
+             cout<<"rate is not set";
+        }
+};
+
+class SBI:public RBI{
+    public:
+    
+       void getrate(){
+             cout<<"rate is 6.5%"<<endl;
+        }
+};
+
+class BOB:public RBI{
+    public:
+    
+       void getrate(){
+             cout<<"rate is 7 5"<<endl;
+        }
+};
+
+class ICICI:public RBI{
+    public:
+    
+       void getrate(){
+             cout<<"rate is 10%"<<endl;
+        }
+};
+
+
+int main()
+{
+    SBI sbi;
+    BOB bob;
+    ICICI icici;
+    
+    
+    sbi.getrate();
+    bob.getrate();
+    icici.getrate();
+
+
+    return 0;
+}
+
+
+
+//==============================================================================
+
+//QUE-2
+
+/*Write a Program to perform four different numbers’ sum by inheriting constructors in
+hybrid inheritance.
+*/
+
+#include <iostream>
+using namespace std;
+
+class Number{
+    
+    public:
+        int n1,n2,n3,n4;
+        
+        Number(int a, int b, int c, int d)
+        {
+            n1=a;
+            n2=b;
+            n3=c;
+            n4=d;
+        }
+};
+
+class Sum: public Number{
+    public:
+    
+        Sum(int a,int b, int c,int d):Number(a,b,c,d) {}
+    
+};
+
+class Bank1: public Sum{
+     public:
+    
+    Bank1(int a,int b, int c,int d):Sum(a,b,c,d) {}
+    
+    int bankdetail()
+    {
+        return n1+n2+n3+n4;
+    }
+};
+
+
+class Bank2: public Sum{
+     public:
+    
+    Bank2(int a,int b, int c,int d):Sum(a,b,c,d) {}
+    
+    int bankdetail()
+    {
+        return n1+n2+n3+n4;
+    }
+};
+
+
+int main()
+{
+    Bank1 b1(10,20,30,40);
+    Bank2 b2(50,20,40,40);
+    
+    cout<<"sum of bank 1:"<<b1.bankdetail()<<endl;
+    cout<<"sum of bank 2:"<<b2.bankdetail()<<endl;
+
+    return 0;
+}

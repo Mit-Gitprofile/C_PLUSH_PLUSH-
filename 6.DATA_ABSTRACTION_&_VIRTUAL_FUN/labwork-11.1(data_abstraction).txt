@@ -1,0 +1,80 @@
+//data abstraction 
+
+//QUE-1
+
+/*Write a Program to abstract some attributes of class Admin to prevent them from being
+inherited by its child classes.
+- Class Admin -> Class Manager
+- Class Manager -> Class Employee
+- Class Admin has the following members:
+company_name
+manager_salary
+employee_salary
+total_staff
+total_annual_revenue
+can_terminate
+- use all attributes accessibility in the parent class and child class properly.
+- override myAccess() in both child classes to display all parent class members' values
+accordingly.*/
+
+#include <iostream>
+using namespace std;
+
+class Admin{
+    public:
+        string company_name;
+        int manager_salary;
+        int employee_salary;
+        
+    void myaccess(){
+        cout<<"Company name:"<<company_name<<endl;
+        cout<<"Manager_salary:"<<manager_salary<<endl;
+        cout<<"Employee_salary:"<<employee_salary<<endl;
+        
+    }
+    
+    void set_data(string name,int m_salary,int e_salary)
+    {
+        company_name=name[50];
+        manager_salary=m_salary;
+        employee_salary=e_salary;
+        
+    }
+};
+
+class Manager : public Admin{
+    public:
+    void myaccess(){
+        Admin::myaccess();
+    }
+};
+
+class Employee : public Manager{
+    public:
+    void myaccess(){
+        Admin::myaccess();
+    }
+};
+
+int main()
+{
+    Admin admin;
+    Manager manager;
+    Employee employee;
+    
+    admin.set_data("aktive_software",90000,80000);
+    manager.set_data("aktive_software",80000,70000);
+    employee.set_data("aktive_software",80000,70000);
+    
+    
+    cout<<endl<<"===== Admin access ====="<<endl;
+    admin.myaccess();
+    
+    cout<<endl<<"===== Manager access ====="<<endl;
+    manager.myaccess();
+    
+    cout<<endl<<"===== Employee access ====="<<endl;
+    employee.myaccess();
+
+    return 0;
+}

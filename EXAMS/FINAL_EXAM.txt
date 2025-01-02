@@ -1,0 +1,522 @@
+
+//==============================================================================
+//     FINAL EXAM ---------------->
+//==============================================================================
+
+
+
+//============//
+//  QUE-1     //
+//============//
+
+
+#include <iostream>
+using namespace std;
+
+class Book{   //CLASS
+    public:
+        char title[50];
+        char author[50];   //DATA MEMBERS
+        int pblish_year;
+        
+};
+
+
+int main()
+{
+    int n;
+    cout<<"ENTER BOOK NO. TO ADD DETAIL:";
+    cin>>n;
+    Book b1[n];  //OBJECT OF CLASS
+    
+    
+    for(int i=1;i<=n;i++)   //GET BOOK DETAILS FROM USER
+    {
+        cout<<endl<<"BOOK NO.:"<<i;
+        cout<<endl<<"Enter book name:";
+        cin>>b1[i].title;           
+        
+        cout<<"Enter book author:";
+        cin>>b1[i].author;
+        
+        cout<<"Enter book published year:";
+        cin>>b1[i].pblish_year;
+    }
+    
+    for(int i=1;i<=n;i++)//DISPLAY BOOK DETAILS TAKEN FROM USER
+    {
+        cout<<endl<<"BOOK NO.:"<<i;
+        cout<<endl<<"book name:"<<b1[i].title<<endl;
+        
+        cout<<"book author:"<<b1[i].author<<endl;
+        
+        cout<<"book published year:"<<b1[i].pblish_year<<endl;
+    }
+    
+    return 0;
+}
+   
+//==============================================================================
+
+
+//============//
+//  QUE-2     //
+//============//
+
+
+#include <iostream>
+using namespace std;
+
+class Person{   //CLASS 
+    private:
+        char name[50];
+        int age;            // DATA MEMBERS
+        char address[50];
+    public:
+        
+    void getdata(int i)   // GET DATA FROM USER
+        {
+            cout<<endl<<"PERSON NO.:"<<i;
+            cout<<endl<<"Enter person name:";
+            cin>>name;
+            
+            cout<<"Enter person age:";
+            cin>>age;
+            
+            cout<<"Enter person address:";
+            cin>>address;
+            
+        }
+        
+    void setdata(int i)   // DISPLAY
+        {
+            cout<<endl<<"PERSON NO.:"<<i;
+            cout<<endl<<"person name:"<<name<<endl;
+            
+            cout<<"person age:"<<age<<endl;
+            
+            cout<<"person address:"<<address<<endl;
+         
+        }
+        
+};
+
+
+int main()
+{
+    int n;
+    cout<<"ENTER PERSON NO. TO ADD DETAIL:";
+    cin>>n;
+    Person p1[n];
+    
+    
+    for(int i=1;i<=n;i++)
+    {
+        p1[i].getdata(i);  // CALL GETDATA METHOD
+    }
+    
+    for(int i=1;i<=n;i++)
+    {
+        p1[i].setdata(i);   // CALL SETDATA METHOD
+    }
+    
+    return 0;
+}
+
+//==============================================================================
+
+
+
+//============//
+//  QUE-3     //
+//============//
+
+
+#include <iostream>
+#include<string.h>
+using namespace std;
+
+class Animal{    //base class
+    private:
+        string name;
+        string sound;
+        
+    public:
+    
+    void setName(const string& n) {
+        name = n;
+    }
+                                         //setter
+    void setSound(const string& s) {
+        sound = s;
+    }
+
+    string getName()
+    {
+        return name;
+    }
+                                      //getter
+    string getSound()
+    {
+        return sound;
+    }
+
+};
+
+
+class Dog : public Animal 
+{  //dog class inherit from animal
+    
+public:
+    Dog(string name)  //constructor
+    {
+        setName(name);
+        setSound("Bark");
+    }
+
+    void makeSound() //makesound method
+    {
+        cout<<getName()<<" says: "<<getSound()<<endl;
+    }
+};
+
+class Cat : public Animal
+{ //cat class inherit from animal
+    
+public:
+    Cat(string name)  //constructor
+    {
+        setName(name);
+        setSound("Meaw");
+    }
+
+    void makeSound()  //makesound method
+    {
+        cout<<getName()<<" says: "<<getSound()<<endl;
+    }
+};
+
+
+int main()
+{
+    Dog dog("Doggy");       //objects
+    Cat cat("Cat");
+
+    dog.makeSound();   //call methods
+    cat.makeSound();
+    return 0;
+}
+
+
+//==============================================================================
+
+
+//============//
+//  QUE-4     //
+//============//
+
+
+#include <iostream>
+#include<string.h>
+using namespace std;
+
+class Animal{   //base class
+    private:
+        string name;
+        string sound;   //data members
+        
+    public:
+    
+    void setName(const string& n) 
+    {
+        name=n;
+    }                                   //setter
+
+    void setSound(const string& s) 
+    {
+        sound=s;
+    }
+
+    string getName()
+    {
+        return name;
+    }
+                                        //getter
+    string getSound()
+    {
+        return sound;
+    }
+    
+    virtual void displayDetails()      //virtual function for display details
+    {
+        cout<<"Animal Name: "<<name<<endl;
+        cout<<"Animal Sound: "<<sound<<endl;
+    }
+    
+
+};
+
+
+class Dog : public Animal  //dog class inherit from animal
+{
+    
+public:
+
+    Dog(string name) //constructor
+    {
+        setName(name);
+        setSound("Bark");
+    }
+    
+    //displayDetails for dog
+    void displayDetails()override 
+    {
+        cout<<"Dog details:"<<endl;
+        cout<<"name: "<<getName()<<endl;
+        cout<<"sound: "<<getSound()<<endl;
+    }
+
+    void makeSound()  //makesound method
+    {
+        cout<<getName()<<" says: "<<getSound()<<endl;
+    }
+};
+
+
+class Cat : public Animal //cat class inherit from animal
+{
+    
+public:
+    Cat(string name) //constructor
+    {
+        setName(name);
+        setSound("Meaw");
+    }
+    
+    //displayDetails for dog
+    void displayDetails()override 
+    {
+        cout<<"Cat details:"<<endl;
+        cout<<"name: "<<getName()<<endl;
+        cout<<"sound: "<<getSound()<<endl;
+    }
+
+    void makeSound() // makesound method
+    {
+        cout<<getName()<<" says: "<<getSound()<<endl;
+    }
+};
+
+
+int main()
+{
+    
+    Animal* a1[2];//pointer object
+    
+    a1[0] = new Dog("Doggy"); 
+    a1[1] = new Cat("Cat");         // give animal name and create a new objects
+    
+    for(int i=0;i<2;i++) 
+    {
+        a1[i]->displayDetails();    // call display details
+        cout<<endl;
+    }
+    
+    return 0;
+}
+
+
+
+//==============================================================================
+
+
+
+//============//
+//  QUE-5     //
+//============//
+
+
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+class Points   // class
+{
+  public:
+    int x,y;  //data members
+
+    void set(int n1 , int n2)   //setter
+    {
+      this->x = n1;
+      this->y = n2;
+
+    }
+
+    void get()      //getter
+    {
+      cout<<" x = "<<this->x<<", y = " <<this->y<<","<<endl;
+      cout<<" "<<this->x<<" + " <<this->y<<"i"<<endl<<endl;
+    }
+    
+    void result()   //dislay result
+    {
+      cout<<"result :";
+      cout<<" "<<this->x<<" + " <<this->y<<"i"<<endl<<endl;
+    }
+
+    Points operator-(Points n)  //operator overloading for substract
+    { 
+      Points temp;
+      temp.x=this->x-n.x;
+      temp.y=this->y-n.y;
+      return temp;
+    }
+};
+
+int main()
+{
+  Points p1, p2,p3;   //multiple objects
+  
+  p1.set(5,3);  //set values
+  p1.get();
+
+  p2.set(3,3);   //set values 
+  p2.get();    
+
+  p3=p1-p2;  // p3 = p1.operator-(p2)
+  p3.result();
+
+
+  return 0;
+
+}
+
+//==============================================================================
+
+
+
+//============//
+//  QUE-6     //
+//============//
+
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+
+class FileManager  //class 
+{
+public:
+    
+    
+    void readFile(string fileName) //get file name from user
+    {
+        ifstream file(fileName);// Open the file using ifstream (input file stream) with the provided file name
+        // this take from online gpt
+
+        if (!file) {
+           
+            cout<<"Error: Could not open the file."<<endl;
+            return;
+        }
+
+       
+        string data;//variable to store data
+        while (getline(file,data)) //read file using getline()  {take from online gpt}
+        {
+            cout<<data<<endl;
+        }
+
+        file.close();// file cliose for save data
+    }
+};
+
+int main() {
+    FileManager f1; // Create an object of FileManager
+    string fName;
+
+    // Get the file name from the user
+    cout<<"Enter the file name: ";
+    cin>>fName;
+
+    // Call the readfile method
+    f1.readFile(fName);
+
+    return 0;
+}
+
+
+//==============================================================================
+
+
+
+//============//
+//  QUE-7     //
+//============//
+
+#include <iostream>
+using namespace std;
+
+class Shape // base class
+{
+public:
+	virtual float calculate()=0;   //virtual function
+
+};
+
+class Circle: public Shape // derived class 
+{
+public:
+	float redious;  //data member
+
+	float calculate() {   //calculate method
+		float area;
+		area=3.14*redious*redious;  //claculate area
+
+		cout<<"area of circle :"<<area<<endl;
+	}
+	
+	void draw()
+	{
+	   	cout<<"drawing Circle with radius :"<<redious<<endl;
+	}
+};
+
+class Rectengle: public Shape // derived class 
+{
+public:
+	float length;  //data member
+	float weidth;
+
+	float calculate() //calculate method
+	{
+		float area;
+		area=length*weidth;//claculate area
+
+		cout<<"area of Tringle :"<<area<<endl;
+	}
+	
+	void draw()
+	{
+	   	cout<<endl<<"drawing Rectengle with length :"<<length<<" and weidth :"<<weidth<<endl;
+	}
+};
+
+
+int main()
+{
+	Circle c1;  //object of circle
+	c1.redious=5;
+    c1.draw();// call draw method
+	c1.calculate(); // call calculate method
+
+
+	Rectengle r1; //object of Rectengle
+	r1.length=4;
+	r1.weidth=6;
+    r1.draw();// call draw method
+	r1.calculate();// call calculate method
+
+	return 0;
+}

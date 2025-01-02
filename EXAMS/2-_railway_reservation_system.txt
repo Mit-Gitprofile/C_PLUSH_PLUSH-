@@ -1,0 +1,144 @@
+//==================================//
+//  Railway Reservation System:-    //
+//==================================//
+
+
+#include <iostream>
+using namespace std;
+
+class Train {//class
+    public:
+        int trainNumber;
+        char trainName[50];
+        char source[50];            //data members
+        char destination[50];       
+        char trainTime[10];
+        
+    public:
+    
+        void inputTrainDetails()
+        {
+            cout<<"enter train number:";
+            cin>>trainNumber;
+            cout<<"enter train name:";
+            cin>>trainName;
+            cout<<"enter source:";
+            cin>>source;
+            cout<<"enter destination:";
+            cin>>destination;
+            cout<<"enter train time:";
+            cin>>trainTime;
+            
+        }
+    
+    public:
+    
+        void displayTrainDetails(int i)
+        {
+            cout<<"TRAIN NO:"<<i+1<<endl;
+            cout<<"train number:"<<trainNumber<<endl;
+            cout<<"train name:"<<trainName<<endl;
+            cout<<"source:"<<source<<endl;
+            cout<<"destination:"<<destination<<endl;
+            cout<<"train time:"<<trainTime<<endl;
+            cout<<"======================================"<<endl;
+            
+        }
+        
+    public:
+        
+        void trainnumbersearch()
+        {
+            cout<<endl<<"Train number matched:-"<<endl<<endl;
+            cout<<"Train No:"<<trainNumber<<endl;
+            cout<<"Train Name:"<<trainName<<endl;
+            cout<<"Source:"<<source<<endl;
+            cout<<"Destination:"<<destination<<endl;
+            cout<<"Train Time "<<trainTime<<endl;
+            
+        }
+};
+
+
+
+int main() {
+    Train t1[100];   //object
+    int ch,n;
+
+    do {
+        cout<<endl<<"----Railway reservation system----"<<endl<<endl;
+        
+        cout<<"1. Add New Train Record"<<endl;
+        cout<<"2. Display All Train Records"<<endl;
+        cout<<"3. Search Train by Number"<<endl;
+        cout<<"4. Exit"<<endl;
+    
+        cout<<"Enter your choise:";
+        cin>>ch;
+
+        switch (ch) 
+        {                                
+            case 1:        // case :1 for take data from user
+            
+                cout<<"Enter data for train-"<<n+1<<":"<<endl;
+                t1[n].inputTrainDetails();
+                n++;
+
+                cout<<"YOUR DATA ENSERT SUCCESSFULLY"<<endl;
+                break;
+
+            case 2:         //  case 2: for displaying all data
+            
+                if(n==0) //if n==0 no data found
+                {
+                    cout<<"train records not available to display!"<<endl;
+                } 
+                else 
+                {
+                    cout<<"DISPLAY:-"<<endl<<endl;
+                    
+                    for (int i=0;i<n;i++)          // displaying all data
+                    {
+                       t1[i].displayTrainDetails(i);
+                    }
+                }
+                break;
+
+            case 3:   // case 3: for search train number
+                {
+                    int searchNumber;
+                    cout<<"enter train number to search:";
+                    cin>>searchNumber;
+                    int found=0;
+
+                    for (int i=0;i<n;i++) 
+                    {
+                        if (t1[i].trainNumber==searchNumber) //if train number was matched 
+                                                             //all matched train data display
+                        {
+                           t1[i].trainnumbersearch();
+                            
+                            found=1;
+                            break;
+                        }
+                    }
+
+                    if (found==0) //if found ==0 not found train number
+                    {
+                        cout<<"train number "<<searchNumber<<"not found!"<<endl;
+                    }
+                }
+                break;
+
+            case 4:  //exit
+                cout <<"Exiting system..."<<endl;
+                break;
+
+            default:
+                cout <<"your choise is wrong!"<<endl;
+                break;
+        }
+    }while(ch!=4);
+
+    return 0;
+}

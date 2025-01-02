@@ -1,0 +1,144 @@
+//=================//
+//    exception    //
+//=================//
+
+//que-1
+/*Write a Program to implement exception handling mechanism for different types of
+scenarios:
+- a number cannot be divided by zero
+- a person cannot be able to vote if his/her age is less than 18
+- a password cannot be validated if it doesn’t contain an uppercase letter*/
+
+
+#include <iostream>
+#include<string.h>
+using namespace std;
+
+int main()
+{
+    int ch;
+    char soluations[] = "ERROR: CANNOT DEVIDE BY ZERO(0)";
+    char soluation[] = "ERROR: YOUR PASSWORD IS NOT IN 8 LETTERS";
+   
+    
+    while(1)
+    {   
+        cout<<"//=================//\n";
+        cout<<"//    exception    //\n";
+        cout<<"//=================//\n";
+        cout<<"1. Divide Numbers\n";
+        cout<<"2. Check Voting Eligibility\n";
+        cout<<"3. Validate Password\n";
+        cout<<"4. EXIT"<<endl;
+        
+        cout<<"ENTER YOUR CHOISE:";
+        cin>>ch;
+        
+            switch(ch)
+            {
+                case 1:
+                    int a,b,c;
+                    cout<<"enter first integer:";
+                    cin>>a;
+                    cout<<"enter second integer:";
+                    cin>>b;
+                
+                     try 
+                     { 
+                       if(b==0||a==0)
+                       { 
+                          throw soluations;
+                       }
+                       else if(b>a)
+                       {
+                           throw 10;
+                       }
+                       else
+                       {
+                         c = a/b;
+                         cout<<"DEVISION IS:"<<c<<endl;
+                       }
+                     }
+                     
+                     catch(char n[])
+                        {
+                          cout << n << endl;
+                        }
+                    catch(int n)
+                        {
+                        	cout << "ERROR: SECOND VALUE IS GREATOR THEN FIRST (DEVISION NOT POSSIBLE)"<<endl<<endl;
+                        }  
+                    break;
+                        
+                case 2:
+                    int d;
+                    cout<<"Enter age to check voting eligibility:";
+                    cin>>d;
+                
+                     try 
+                     { 
+                       if(d<=18)
+                       { 
+                          throw 20;
+                       }
+                       else
+                       {
+                         cout<<"You are eligible to vote."<<endl;
+                       }
+                     }
+                     
+                    catch(int n)
+                        {
+                        	cout << "ERROR: YOU MUST BE AT LEAST 18 YEARS OLD TO VOTE..."<<endl<<endl;
+                        }
+                    break;
+                    
+                case 3:
+                    char e[100];
+                    cout<<"Enter password to validate (8-LETTERS ONLY):";
+                    cin>>e;
+                
+                     try 
+                     { 
+                        if(strlen(e)!= 8)
+                        {
+                            throw soluation;
+                        }
+        
+                        
+                        for(int i=0;e[i]!='\0';i++)
+                        {
+                            if(!isupper(e[i]))
+                            {
+                                throw 30;
+                            }
+                        }
+                        
+                        cout << "PASSWORD IS VELID..." << endl;
+    
+                      
+                     }
+                    catch(char m[])
+                        {
+                        	cout << m <<endl<<endl;
+                        }
+                     
+                    catch(int n)
+                        {
+                        	cout << "ERROR: WRITE YOUR PASSWORD IN CAPITAL LATTERS..."<<endl<<endl;
+                        }
+                    break;
+                    
+                case 4:
+                    cout<<"EXITING SYSTEM....";
+                    return 0;
+                    break;
+                    
+                default:
+                    cout<<"WRONG CHOISE...."<<endl;
+                    break;
+            }
+        }
+
+    return 0;
+}
